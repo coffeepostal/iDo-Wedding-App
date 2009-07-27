@@ -3,7 +3,6 @@ class CreateThankYous < ActiveRecord::Migration
     create_table :thank_yous do |t|
       t.references :gift
       t.text :note
-
       t.timestamps
     end
   end

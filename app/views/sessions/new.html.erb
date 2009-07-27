@@ -1,0 +1,17 @@
+<h1>Login</h1>
+
+<%- form_for @guest, :url => login_path do |f| -%>
+	<%= content_tag :p, flash[:error], :style => 'color: red;' if flash[:error] %>
+	
+	<p>
+		<%= f.label :last_name, 'Last Name' %><br />
+		<%= f.text_field :last_name %>
+	</p>
+	
+	<p>
+		<%= f.label :pin, 'PIN' %><br />
+		<%= f.text_field :pin %>
+	</p>
+	
+	<p><%= f.submit 'Login' %></p>
+<%- end -%>

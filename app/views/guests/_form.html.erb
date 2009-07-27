@@ -17,9 +17,11 @@
 	<%- end -%>
 <%- end -%>
 
-<%- field_set_tag 'Gift' do -%>
-	<%- form.fields_for @guest.gift || Gift.new do |gift| -%>
-		<%= render 'gifts/form', :gift => gift %>
+<%- if admin? -%>
+	<%- field_set_tag 'Gift' do -%>
+		<%- form.fields_for @guest.gift || Gift.new do |gift| -%>
+			<%= render 'gifts/form', :gift => gift %>
+		<%- end -%>
 	<%- end -%>
 <%- end -%>
 

@@ -1,25 +1,40 @@
-<!--
-<h2><%=h @guest.first_name %> <%=h @guest.last_name %></h2>
--->
+<%- if admin? -%>
+	<h2><%= mail_to @guest.email , @guest.full_name, :confirm => "Are you sure you want to send an email to #{@guest.name} <#{@guest.email}>?" %></h2>
+<%- else -%>
+	<h2><%= @guest.full_name %></h2>
+	<p><%=h @guest.email %></p>
+<%- end -%>
 
-<h2><%= mail_to @guest.email , @guest.prefix + @guest.name, :confirm => "Are you sure you want to email " + @guest.name + " [" + @guest.email + "]?" %></h2>
+<h4>Address</h4>
+<%- if @guest.address.present? -%>
+	<p><%= @guest.address %></p>
+<%- else -%>
+	<p>No address entered.</p>
+<%- end -%>
 
-<p>
-	<%=h @guest.email %>
-</p>
+<%- if admin? && @guest.gift.present? -%>
+	<h4>Gift</h4>
+	<p>Gift: <%= @guest.gift.gift %></p>
+<%- end -%>
 
-<p>
-	<%= @guest.address.line_1 %>
-<br>
-	<%= @guest.address.line_2 %>
-<br>
-	<%= @guest.address.city %>, <%= @guest.address.state %> <%= @guest.address.zip %>
-</p>
+<h4>RSVP</h4>
+<%- if @guest.rsvp.present? -%>
+	<dl>
+		<dt>attending:</dt>
+		<dd><%= @guest.rsvp.attending? ? 'Yup!' : 'Nope.' %></dd>
+		
+		<%- if @guest.rsvp.attending? -%>
+			<dt>number:</dt>
+			<dd><%= @guest.rsvp.number_attending %></dd>
+		<%- end -%>
+		
+		<%- if admin? -%>
+			<dt>done by admin:</dt>
+			<dd><%= @guest.rsvp.admin_rsvp? ? 'Yes' : 'No' %></dd>
+		<%- end -%>
+	</dl>
+<%- else -%>
+	<p>You have not yet RSVP’d!</p>
+<%- end -%>
 
-<p>Gift: <%= @guest.gift.gift %></p>
-
-<p>RSVP: <%= @guest.rsvp.attending %>, <%= @guest.rsvp.number_attending %>, <%= @guest.rsvp.admin_rsvp %></p>
-
-
-<%= link_to 'Edit', edit_guest_path(@guest) %> |
-<%= link_to 'Back', guests_path %>
+<%= link_to 'Update My Info', edit_guest_path %>

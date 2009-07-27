@@ -1,7 +1,8 @@
 class CreateGuests < ActiveRecord::Migration
   def self.up
     create_table :guests do |t|
-      t.string :prefix, :first_name, :last_name, :email
+      t.string :prefix, :first_name, :last_name, :email, :pin
+      t.boolean :admin, :null => false, :default => false
       t.timestamps
     end
   end

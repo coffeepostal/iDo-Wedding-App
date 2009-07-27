@@ -1,9 +1,8 @@
-<h1>Editing guest</h1>
+<h1>Updating Guest Info</h1>
 
 <%- form_for @guest do |form| -%>
 	<%= render form %>
 	<p><%= form.submit 'Update' %></p>
 <%- end -%>
 
-<%= link_to 'Show', @guest %> |
-<%= link_to 'Back', guests_path %>
+<%= link_to 'Back', guest_path %>
