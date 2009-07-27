@@ -2830,3 +2830,71 @@ Processing GuestsController#index (for 127.0.0.1 at 2009-07-26 16:51:31) [GET]
 Rendering template within layouts/guests
 Rendering guests/index
 Completed in 32ms (View: 14, DB: 2) | 200 OK [http://localhost/guests]
+
+
+Processing GuestsController#index (for 127.0.0.1 at 2009-07-26 19:35:29) [GET]
+  [4;36;1mGuest Load (1.6ms)[0m   [0;1mSELECT * FROM "guests" [0m
+Rendering template within layouts/guests
+Rendering guests/index
+Completed in 90ms (View: 66, DB: 2) | 200 OK [http://localhost/guests]
+
+
+Processing GuestsController#index (for 127.0.0.1 at 2009-07-26 19:35:32) [GET]
+  [4;35;1mGuest Load (1.1ms)[0m   [0mSELECT * FROM "guests" [0m
+Rendering template within layouts/guests
+Rendering guests/index
+Completed in 31ms (View: 13, DB: 1) | 200 OK [http://localhost/guests]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateGuests (20090709211326)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "prefix" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709211326')[0m
+Migrating to CreateAddresses (20090709211337)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "addresses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer, "line_1" varchar(255), "line_2" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090709211337')[0m
+Migrating to CreateGifts (20090710192341)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "gifts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer, "gift" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090710192341')[0m
+Migrating to CreateRsvps (20090710211523)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "rsvps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "guest_id" integer, "attending" boolean, "number_attending" integer, "group_rsvp" boolean, "admin_rsvp" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090710211523')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("addresses")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("gifts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("guests")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("rsvps")[0m
+
+
+Processing GuestsController#index (for 127.0.0.1 at 2009-07-26 19:38:05) [GET]
+  [4;36;1mGuest Load (0.4ms)[0m   [0;1mSELECT * FROM "guests" [0m
+Rendering template within layouts/guests
+Rendering guests/index
+Completed in 36ms (View: 15, DB: 0) | 200 OK [http://localhost/guests]
+
+
+Processing GuestsController#new (for 127.0.0.1 at 2009-07-26 19:38:06) [GET]
+Rendering template within layouts/guests
+Rendering guests/new
+Rendered addresses/_form (10.0ms)
+Rendered gifts/_form (5.9ms)
+Rendered rsvps/_form (5.0ms)
+Rendered guests/_form (152.0ms)
+Completed in 183ms (View: 165, DB: 0) | 200 OK [http://localhost/guests/new]
