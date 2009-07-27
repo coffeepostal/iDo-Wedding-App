@@ -1,0 +1,15 @@
+<h1>Guests</h1>
+
+<% @guests.each do |guest| %>
+  <div class="guest">
+    <h2><%= link_to guest.name, guest %></h2>
+    <!--<p><%=h guest.email %></p>-->
+    
+    <p><%= link_to 'Edit', edit_guest_path(guest) %> |
+    <%= link_to 'Destroy', guest, :confirm => 'Are you sure?', :method => :delete %></p>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to 'New guest', new_guest_path %>

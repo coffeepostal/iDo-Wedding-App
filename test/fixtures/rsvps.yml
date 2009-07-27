@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guest_id: 1
+  attending: false
+  number_attending: 1
+  group_rsvp: false
+  admin_rsvp: false
+
+two:
+  guest_id: 1
+  attending: false
+  number_attending: 1
+  group_rsvp: false
+  admin_rsvp: false

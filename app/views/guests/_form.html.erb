@@ -1,0 +1,30 @@
+<%= form.error_messages %>
+
+<p>
+	<%= form.label :name %><br />
+	<%= form.select :prefix, [["", ""], ["Dr.", "Dr. "], ["Mr.", "Mr. "], ["Mrs.", "Mrs. "], ["Miss", "Miss "], ["Rev.", "Rev. "]] %>
+	<%= form.text_field :name %>
+</p>
+
+<p>
+	<%= form.label :email %><br />
+	<%= form.text_field :email %>
+</p>
+
+<%- field_set_tag 'Address' do -%>
+	<%- form.fields_for @guest.address || Address.new do |address| -%>
+		<%= render 'addresses/form', :address => address %>
+	<%- end -%>
+<%- end -%>
+
+<%- field_set_tag 'Gift' do -%>
+	<%- form.fields_for @guest.gift || Gift.new do |gift| -%>
+		<%= render 'gifts/form', :gift => gift %>
+	<%- end -%>
+<%- end -%>
+
+<%- field_set_tag 'Rsvp' do -%>
+	<%- form.fields_for @guest.rsvp || Rsvp.new do |rsvp| -%>
+		<%= render 'rsvps/form', :rsvp => rsvp %>
+	<%- end -%>
+<%- end -%>

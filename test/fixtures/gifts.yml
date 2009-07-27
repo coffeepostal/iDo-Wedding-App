@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guest_id: 1
+  gift: MyText
+
+two:
+  guest_id: 1
+  gift: MyText

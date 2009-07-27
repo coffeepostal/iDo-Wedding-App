@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  guest_id: 1
+  line_1: MyString
+  line_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+
+two:
+  guest_id: 1
+  line_1: MyString
+  line_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString

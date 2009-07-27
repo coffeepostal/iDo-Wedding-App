@@ -1,0 +1,10 @@
+	<%= rsvp.hidden_field(:admin_rsvp, :value => "0") %>
+<p>
+	<%= rsvp.label :attending, "Will you be attending?" %><br />
+	<%= rsvp.select :attending, [["No", "false"], ["Yes", "true"]] %>
+</p>
+
+<p>
+	<%= rsvp.label :number_attending, "How many will be attending?" %><br />
+	<%= rsvp.select :number_attending, [["1", "1"], ["2", "2"]] %>
+</p>

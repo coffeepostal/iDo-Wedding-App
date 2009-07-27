@@ -1,0 +1,25 @@
+<!--
+<h2><%=h @guest.first_name %> <%=h @guest.last_name %></h2>
+-->
+
+<h2><%= mail_to @guest.email , @guest.prefix + @guest.name, :confirm => "Are you sure you want to email " + @guest.name + " [" + @guest.email + "]?" %></h2>
+
+<p>
+	<%=h @guest.email %>
+</p>
+
+<p>
+	<%= @guest.address.line_1 %>
+<br>
+	<%= @guest.address.line_2 %>
+<br>
+	<%= @guest.address.city %>, <%= @guest.address.state %> <%= @guest.address.zip %>
+</p>
+
+<p>Gift: <%= @guest.gift.gift %></p>
+
+<p>RSVP: <%= @guest.rsvp.attending %>, <%= @guest.rsvp.number_attending %>, <%= @guest.rsvp.admin_rsvp %></p>
+
+
+<%= link_to 'Edit', edit_guest_path(@guest) %> |
+<%= link_to 'Back', guests_path %>
