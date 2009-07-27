@@ -1,0 +1,22 @@
+<h1>Listing thank_yous</h1>
+
+<table>
+  <tr>
+    <th>Gift</th>
+    <th>Note</th>
+  </tr>
+
+<% @thank_yous.each do |thank_yous| %>
+  <tr>
+    <td><%=h thank_yous.gift %></td>
+    <td><%=h thank_yous.note %></td>
+    <td><%= link_to 'Show', thank_yous %></td>
+    <td><%= link_to 'Edit', edit_thank_yous_path(thank_yous) %></td>
+    <td><%= link_to 'Destroy', thank_yous, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New thank_yous', new_thank_yous_path %>
