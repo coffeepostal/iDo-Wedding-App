@@ -22,7 +22,7 @@ To exit the console, type:
 
   exit
 
-The result will be the PIN associated with your guest record. Run script/server (if not using "Passenger":http://www.modrails.com/) and visit the app in your browser. The login name will be your last name ("NAME" in the above example), and the PIN will be the PIN generated when your guest record was created (the output of +guest.pin+). Using the admin guest you'll be able to create all the other guests by navigating to "/admin/guests".
+The result will be the PIN associated with your guest record. Run script/server (if not using Passenger[http://www.modrails.com/]) and visit the app in your browser. The login name will be your last name ("NAME" in the above example), and the PIN will be the PIN generated when your guest record was created (the output of <tt>guest.pin</tt>). Using the admin guest you'll be able to create all the other guests by navigating to "/admin/guests".
 
 Thanks,
 Adam
