@@ -14,7 +14,7 @@ Once the console has launched, run this (replace "ADMIN NAME" with your name, an
 
   guest = Guest.new(:name => 'ADMIN NAME', :email => 'email@example.com')
   
-Then, since we don't want <tt>:admin</tt> to be mass-assignable, type:
+Then, since <tt>:admin</tt> is not mass-assignable, type:
 
   guest.admin = true
   guest.save
