@@ -4,5 +4,25 @@ When I got engaged, my fiancée and I wanted an in-depth RSVP manager, along wit
 
 I'm currently still building *iDo*, but should be done relatively soon. Keep checking back here for updates, or I guess you can _watch_ the app here on *GitHub* and keep up-to-date that way.
 
+= Setup - First User Setup
+
+You'll need to manually add the admin guest from the console. Do so by running the following from the command line inside the app folder:
+
+  script/console
+
+Once the console has launched, run this (replace "ADMIN NAME" with your name, and "email@example.com" with your email address):
+
+  guest = Guest.create(:name => 'ADMIN NAME', :email => 'email@example.com', :admin => true)
+
+Then run:
+
+  guest.pin
+
+To exit the console, type:
+
+  exit
+
+The result will be the pin number associated with the guest. Run the script/server, go into your browser, and launch the app. You login will be your last name and the pin, will be the pin generated above. From within the admin guest you'll be able to create all the other guests.
+
 Thanks,
 Adam
