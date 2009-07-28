@@ -29,6 +29,6 @@ To exit the console, type:
 
 The result will be the PIN associated with your new (admin) guest record. Run script/server (if not using Passenger[http://www.modrails.com/]) and visit the app in your browser. The login name will be your last name ("NAME" in the above example), and the PIN will be the PIN generated when your guest record was created (the output of <tt>guest.pin</tt>). Using the admin guest you'll be able to create all the other guests by navigating to "/guests".
 
-Thanks,<br />
-Adam<br />
-and the iDo team
+Thanks,
+
+Adam and the iDo team
