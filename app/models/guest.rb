@@ -3,6 +3,8 @@ class Guest < ActiveRecord::Base
   has_one :gift
   has_one :rsvp
   
+  attr_protected :admin
+  
   # Validating the guest form fields aren't empty.
   validates_presence_of :name, :email
   validates_associated :address
