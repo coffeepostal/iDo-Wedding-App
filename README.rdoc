@@ -4,5 +4,25 @@ When I got engaged, my fiancée and I wanted an in-depth RSVP manager, along wit
 
 I'm currently still building *iDo*, but should be done relatively soon. Keep checking back here for updates, or I guess you can _watch_ the app here on *GitHub* and keep up-to-date that way.
 
+= Setup - First User Setup
+
+You'll need to manually add the admin guest from the console. Do so by running the following from the command line inside the app folder:
+
+  script/console
+
+Once the console has launched, run this (replace "ADMIN NAME" with your name, and "email@example.com" with your email address):
+
+  guest = Guest.create(:name => 'ADMIN NAME', :email => 'email@example.com', :admin => true)
+
+Then, to get the newly generated PIN, type:
+
+  guest.pin
+
+To exit the console, type:
+
+  exit
+
+The result will be the PIN associated with your guest record. Run script/server (if not using "Passenger":http://www.modrails.com/) and visit the app in your browser. The login name will be your last name ("NAME" in the above example), and the PIN will be the PIN generated when your guest record was created (the output of +guest.pin+). Using the admin guest you'll be able to create all the other guests by navigating to "/admin/guests".
+
 Thanks,
 Adam
