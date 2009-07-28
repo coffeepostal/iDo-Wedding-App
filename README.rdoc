@@ -12,9 +12,14 @@ You'll need to manually add the admin guest from the console. Do so by running t
 
 Once the console has launched, run this (replace "ADMIN NAME" with your name, and "email@example.com" with your email address):
 
-  guest = Guest.create(:name => 'ADMIN NAME', :email => 'email@example.com', :admin => true)
+  guest = Guest.new(:name => 'ADMIN NAME', :email => 'email@example.com')
+  
+Then, since we don't want +:admin+ to be mass-assigned, type:
 
-Then, to get the newly generated PIN, type:
+  guest.admin = true
+  guest.save
+
+And, to get the newly generated PIN, type:
 
   guest.pin
 
