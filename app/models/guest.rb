@@ -6,7 +6,8 @@ class Guest < ActiveRecord::Base
   attr_protected :admin
   
   # Validating the guest form fields aren't empty.
-  validates_presence_of :name, :email
+  validates_presence_of :name
+  validates_presence_of :email, :unless => lambda {|guest| guest.admin?}
   validates_associated :address
   
   before_create :generate_pin

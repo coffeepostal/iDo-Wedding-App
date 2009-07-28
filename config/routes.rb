@@ -5,13 +5,14 @@ ActionController::Routing::Routes.draw do |map|
     session.logout  'logout', :action => :destroy
     
     # make logging in our default route
-    session.root    :action => :new
+    session.root :action => :new
   end
   
   map.resource :guest, :as => 'me', :only => [:show, :edit, :update]
   
-  map.resources :admin_guests, :as => 'admin/guests' do |admin_guest|
-    admin_guest.resource :address, :rsvp
-    admin_guest.resource :gift, :has_one => :thank_you
+  map.resources :guests, :name_prefix => 'admin_' do |guests|
+    guests.resource :address, :rsvp
+    guests.resources :gifts, :has_one => :thank_you
   end
+  map.resources :addresses, :gifts, :rsvps, :thank_yous
 end

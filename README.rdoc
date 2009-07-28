@@ -10,9 +10,9 @@ You'll need to manually add the admin guest from the console. Do so by running t
 
   script/console
 
-Once the console has launched, run this (replace "ADMIN NAME" with your name, and "email@example.com" with your email address):
+Once the console has launched, run this (replace "ADMIN NAME" with your name):
 
-  guest = Guest.new(:name => 'ADMIN NAME', :email => 'email@example.com')
+  guest = Guest.new(:name => 'ADMIN NAME')
   
 Then, since <tt>:admin</tt> is not mass-assignable, type:
 
