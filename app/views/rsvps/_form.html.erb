@@ -1,4 +1,4 @@
-<%= rsvp.hidden_field :admin_rsvp, :value => rsvp.object.admin_rsvp.nil? ? admin? : rsvp.object.admin_rsvp %>
+<%= rsvp.hidden_field :admin_rsvp, :value => !!@admin ? 't' : 'f' %>
 
 <p>
 	<%= rsvp.label :attending, 'Will you be attending?' %><br />

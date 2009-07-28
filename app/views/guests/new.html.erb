@@ -1,0 +1,8 @@
+<h1>Add a Guest</h1>
+
+<%- form_for @guest, :url => admin_guests_path do |form| -%>
+	<%= render form %>
+	<p><%= form.submit 'Create' %></p>
+<%- end -%>
+
+<%= link_to 'Back', guest_path %>

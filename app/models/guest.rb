@@ -36,15 +36,21 @@ class Guest < ActiveRecord::Base
   end
 
   def address=(address_params)
-    build_address address_params
+    return if address_params.all?(&:blank?)
+    address = self.address || self.build_address
+    address.update_attributes(address_params) 
   end
   
   def gift=(gift_params)
-    build_gift gift_params
+    return if gift_params.all?(&:blank?)
+    gift = self.gift || self.build_gift
+    gift.update_attributes(gift_params)
   end
   
   def rsvp=(rsvp_params)
-    build_rsvp rsvp_params
+    return if rsvp_params.all?(&:blank?)
+    rsvp = self.rsvp || self.build_rsvp
+    rsvp.update_attributes(rsvp_params)
   end
   
   private

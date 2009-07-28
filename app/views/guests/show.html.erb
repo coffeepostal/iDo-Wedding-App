@@ -1,12 +1,17 @@
 <h2><%= @guest.full_name %></h2>
 <p><%=h @guest.email %></p>
 
-<%- unless admin? -%>
+<%- unless @guest == @admin -%>
 	<h4>Address</h4>
 	<%- if @guest.address.present? -%>
 		<p><%= @guest.address %></p>
 	<%- else -%>
 		<p>No address entered. <%= link_to 'Enter Address.', edit_guest_path %></p>
+	<%- end -%>
+
+	<%- if @admin -%>
+		<h4>Gift</h4>
+		<p><%= @guest.gift.present? ? @guest.gift.gift : 'None yet!' %></p>
 	<%- end -%>
 
 	<h4>RSVP</h4>
@@ -20,7 +25,7 @@
 				<dd><%= @guest.rsvp.number_attending %></dd>
 			<%- end -%>
 		
-			<%- if admin? -%>
+			<%- if @admin -%>
 				<dt>done by admin:</dt>
 				<dd><%= @guest.rsvp.admin_rsvp? ? 'Yes' : 'No' %></dd>
 			<%- end -%>
@@ -29,16 +34,7 @@
 		<p>You have not yet RSVP’d! <%= link_to 'RSVP!', edit_guest_path %></p>
 	<%- end -%>
 
-	<%= link_to 'Update My Info', edit_guest_path %>
+	<%= link_to "Update #{@admin ? @guest.first_name + '’s' : 'My'} Info", @admin ? edit_admin_guest_path(@guest) : edit_guest_path %>
 <%- else -%>
-	<p>
-		Hurray! You’re an admin user!<br />
-		What would you like to do now?
-	</p>
-	<ul>
-		<li><%= link_to 'manage Guests', admin_guests_path %></li>
-		<li><%= link_to 'manage RSVPs', rsvps_path %></li>
-		<li><%= link_to 'manage Gifts', gifts_path %></li>
-		<li><%= link_to 'manage Thank Yous', thank_yous_path %></li>
-	</ul>
+	<p>Hurray! You’re an admin user!</p>
 <%- end -%>
