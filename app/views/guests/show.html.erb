@@ -4,7 +4,7 @@
 <%- unless @guest == @admin -%>
 	<h4>Address</h4>
 	<%- if @guest.address.present? -%>
-		<p><%= @guest.address %></p>
+		<%= html_for_address(@guest.address) %>
 	<%- else -%>
 		<p>No address entered. <%= link_to 'Enter Address.', edit_guest_path %></p>
 	<%- end -%>
