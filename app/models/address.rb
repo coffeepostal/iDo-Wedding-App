@@ -4,7 +4,7 @@ class Address < ActiveRecord::Base
   COUNTRY_OPTIONS = ['United States', 'Canada', 'Italy']
   
   # Validating the address form fields aren't empty.
-  validates_presence_of :guest_id, :line_1, :city
+  validates_presence_of :line_1, :city
   validates_inclusion_of :country, :in => COUNTRY_OPTIONS
   
   # United States Address:
@@ -31,7 +31,7 @@ class Address < ActiveRecord::Base
   validates_format_of :zip, :with => /^\d{5}$/, :if => lambda{|a| a.country == 'Italy'}
   
   def lines
-    [line_1, line_2, "#{city}, #{state} #{zip}"]
+    [[guest.try(:full_name), additional_names].compact.to_sentence(:two_words_connector => ' & '), line_1, line_2, "#{city}, #{state} #{zip}"]
   end
   
   def to_s
