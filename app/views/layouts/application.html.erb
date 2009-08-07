@@ -10,7 +10,10 @@
 	<%= content_tag(:div, flash[:notice], :id => 'flash') if flash[:notice] %>
 	<div id="container">
 		<div id="header">
-			<%= image_tag("img-header-coatOfArms.png") %>
+			<%- if @guest -%>
+			<div id="logout"><h3><%= link_to 'Logout', logout_path %></h3></div>
+			<%- end -%>
+			
 		</div>
 		<%- if @admin -%>
 		<div id="admin-nav">
@@ -28,7 +31,7 @@
 			<%= yield %>
 		</div>
 		<div id="footer">
-			<p class="center">@2009 Adam Farnsworth</p>
+			<%= image_tag("img-footer-cornerStamp.png") %>
 		</div>
 	</div>
 </body>

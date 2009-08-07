@@ -3,11 +3,19 @@
 		<h2><%= @guest.full_name %></h2>
 	<%- else -%>
 		<h2>Welcome, <%= @guest.full_name %></h2>
-		<p>Please confirm that all the information below is correct. If not, go ahead and click on the "Update My Info" button below.</p>
+		<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
+			<%- if @guest.rsvp.attending? -%>
+				<p class="status">Thank you for your RSVP. We're looking forward to seeing you at the wedding! If you need to change any details, you can always log back in here and make those changes.</p>
+			<%- else -%>
+				<p class="status">Thank you for your RSVP. We're sorry we won't see you at the wedding. If your situation changes, and you can come, feel free to log back in here and change your RSVP.</p>
+			<%- end -%>
+		<%- else -%>
+			<p class="status">Please confirm that all the information below is correct. If not, go ahead and click on the "Update My Info" button below.</p>
+		<%- end -%>
 	<%- end -%>
 
 	<%- unless @guest == @admin -%>
-		<h3>Address</h3>
+		<h3>Mailing Address:</h3>
 		<%- if @guest.address.present? -%>
 			<ul class="address"><%= html_for_address(@guest.address) %></ul>
 		<%- else -%>
