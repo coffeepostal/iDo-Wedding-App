@@ -1,5 +1,11 @@
 = Welcome to iDo - Wedding App
 
+= TEMPORARY NOTE
+
+So, I, Adam, am getting married in the middle of September, so until then, this repo will be a little crazy. Feel free to download it and use it, but we'll be constantly adding and changing things, plus adding personal details that wouldn't apply to anyone else's wedding. Anyway, after the wedding Dallas and I will clean up the code and post a fully functional and customizable app.
+
+= Introduction
+
 When I got engaged, my fiancée and I wanted an in-depth RSVP manager, along with the ability to easily tie people to the gifts they purchased us. I searched *GitHub* for a wedding app, and found a few, but most were glorified blogs, and so I created iDo.
 
 I'm currently still building *iDo*, but should be done relatively soon. Keep checking back here for updates, or I guess you can _watch_ the app here on *GitHub* and keep up-to-date that way.
