@@ -33,12 +33,13 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dd, dt, table, td, th, tr, form
 /*		Layout Styles			*/
 /********************************/
 body { background-color: #222; text-align: center; margin: 0px auto; font-family: Georgia, serif; color: #222; }
-#container { background-color: #F2F5E6; width: 1024px; margin: 0 auto; text-align: left; }
-#flash { background: url(/images/bg-flash.png) bottom center no-repeat; position: absolute; top: 0px; left: 50%; width: 500px; padding: 20px 50px; color: #FFF; margin-left: -250px; z-index: 99; }
-#header { height: 100px; }
-#content { margin: 0px 50px; }
+#flash { background: #F2F5E6; width: 944px; margin: 0 auto; padding: 10px 50px 10px 50px; color: #222; }
+#container { background: url(/images/bg-body.jpg) top center repeat-x #F2F5E6; width: 1024px; margin: 0 auto; text-align: left; }
+#header { height: 110px; }
+#content { margin: 0px 40px 10px 100px; padding-bottom: 20px; border-left: #222 solid 2px; border-bottom: #222 solid 2px; border-right: #222 solid 2px; }
+#main { padding: 20px; }
 #footer { height: 100px; }
-#admin-nav { width: 1024px; background-color: #222; margin: 10px 0; }
+#admin-nav { width: 1024px; background-color: #222; margin: 0; }
 .admin-manage-guest-box { padding: 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
 
 
@@ -51,7 +52,8 @@ h3 { font-size: 12px; font-weight: bold; padding-top: 10px; }
 h4 { font-size: 12px; font-weight: normal; }
 h5 {  }
 h6 { font-size: 8px; padding: 5px; text-transform: uppercase; text-align: right; }
-p { font-size: 11px; line-height: 18px; margin-left: 10px; margin-right: 10px; }
+p { font-size: 12px; line-height: 18px; margin: 0 10px 10px 10px; }
+quote { background: #DBDED0; font-size: 12px; line-height: 18px; font-style: italic; margin: 0 50px; padding: 5px; }
 
 
 /********************************/
@@ -59,7 +61,7 @@ p { font-size: 11px; line-height: 18px; margin-left: 10px; margin-right: 10px; }
 /********************************/
 .bold { font-weight: bold; }
 .fancy { font-family: Georgia, "Times New Roman", Times, serif; font-style: italic; font-weight: normal; }
-.small { font-size: 11px; }
+.small { font-size: 12px; }
 
 
 /********************************/
@@ -83,7 +85,7 @@ li {  }
 	#admin-nav li a { float: none; }
 /* End hide */
 ul.address { list-style: none; padding: 0; margin: 0; }
-ul.address li { font-size: 11px; }
+ul.address li { font-size: 12px; }
 
 
 /********************************/
@@ -115,7 +117,7 @@ p a {  }
 /*		Image Styles			*/
 /********************************/
 img { margin: 0px; border: none; }
-.tabled_img { float: left; }
+.img_center { text-align: center; }
 
 
 /********************************/

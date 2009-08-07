@@ -1,60 +1,62 @@
-<%- if @admin -%>
-	<h2><%= @guest.full_name %></h2>
-<%- else -%>
-	<h2>Welcome, <%= @guest.full_name %></h2>
-	<p>Please confirm that all the information below is correct. If not, go ahead and click on the "Update My Info" button below.</p>
-<%- end -%>
-
-<%- unless @guest == @admin -%>
-	<h3>Address</h3>
-	<%- if @guest.address.present? -%>
-		<ul class="address"><%= html_for_address(@guest.address) %></ul>
-	<%- else -%>
-		<p>No address entered, please add one: <%= link_to 'Enter Address.', edit_guest_path %></p>
-	<%- end -%>
-	
-	<h3>Email Address:</h3>
-	<%- if @guest.email.present? -%>
-		<p><%=h @guest.email %></p>
-	<%- else -%>
-		<p>No email address entered, please add one: <%= link_to 'Enter Email Address.', edit_guest_path %></p>
-	<%- end -%>
-
+<div id="main">
 	<%- if @admin -%>
-		<h3>Gift</h3>
-		<p><%= @guest.gift.present? ? @guest.gift.gift : 'None yet!' %></p>
+		<h2><%= @guest.full_name %></h2>
+	<%- else -%>
+		<h2>Welcome, <%= @guest.full_name %></h2>
+		<p>Please confirm that all the information below is correct. If not, go ahead and click on the "Update My Info" button below.</p>
 	<%- end -%>
 
-	<h3>RSVP</h3>
-	<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
-		<%- if @guest.rsvp.attending? -%>
-			<p>Yes,  
-				<%- if @guest.rsvp.number_attending == 1 -%>
-				I will be attending by myself.
-				<%- elsif @guest.rsvp.number_attending == 2 -%>
-				I will be attending with a date
-				<%- else -%>
-				all <%= @guest.rsvp.number_attending.to_word %> will be attending
-				<%- end -%>
-			.</p>
+	<%- unless @guest == @admin -%>
+		<h3>Address</h3>
+		<%- if @guest.address.present? -%>
+			<ul class="address"><%= html_for_address(@guest.address) %></ul>
 		<%- else -%>
-			<p>No, I'm sorry, 
-				<%- if @guest.rsvp.number_attending == 1 -%>
-				I won't be able to attend.
-				<%- else -%>
-				we won't be able to attend.
-				<%- end -%>
-				</p>
+			<p>No address entered, please add one: <%= link_to 'Enter Address.', edit_guest_path %></p>
 		<%- end -%>
 	
-		<%- if @admin -%>
-			<h3><%= @guest.rsvp.admin_rsvp? ? 'This guest was registered by an Admin.' : 'This guest was NOT registered by an Admin.' %></h3>
+		<h3>Email Address:</h3>
+		<%- if @guest.email.present? -%>
+			<p><%=h @guest.email %></p>
+		<%- else -%>
+			<p>No email address entered, please add one: <%= link_to 'Enter Email Address.', edit_guest_path %></p>
 		<%- end -%>
-	<%- else -%>
-		<p>You have not yet RSVP’d! <%= link_to 'RSVP!', edit_guest_path %></p>
-	<%- end -%>
 
-	<%= link_to "Update #{@admin ? @guest.first_name + '’s' : 'My'} Info", @admin ? edit_admin_guest_path(@guest) : edit_guest_path %>
-<%- else -%>
-	<p>Hurray! You’re an admin user!</p>
-<%- end -%>
+		<%- if @admin -%>
+			<h3>Gift</h3>
+			<p><%= @guest.gift.present? ? @guest.gift.gift : 'None yet!' %></p>
+		<%- end -%>
+
+		<h3>RSVP</h3>
+		<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
+			<%- if @guest.rsvp.attending? -%>
+				<p>Yes,  
+					<%- if @guest.rsvp.number_attending == 1 -%>
+					I will be attending by myself.
+					<%- elsif @guest.rsvp.number_attending == 2 -%>
+					I will be attending with a date
+					<%- else -%>
+					all <%= @guest.rsvp.number_attending.to_word %> will be attending
+					<%- end -%>
+				.</p>
+			<%- else -%>
+				<p>No, I'm sorry, 
+					<%- if @guest.rsvp.number_attending == 1 -%>
+					I won't be able to attend.
+					<%- else -%>
+					we won't be able to attend.
+					<%- end -%>
+					</p>
+			<%- end -%>
+	
+			<%- if @admin -%>
+				<h3><%= @guest.rsvp.admin_rsvp? ? 'This guest was registered by an Admin.' : 'This guest was NOT registered by an Admin.' %></h3>
+			<%- end -%>
+		<%- else -%>
+			<p>You have not yet RSVP’d! <%= link_to 'RSVP!', edit_guest_path %></p>
+		<%- end -%>
+
+		<%= link_to "Update #{@admin ? @guest.first_name + '’s' : 'My'} Info", @admin ? edit_admin_guest_path(@guest) : edit_guest_path %>
+	<%- else -%>
+		<p>Hurray! You’re an admin user!</p>
+	<%- end -%>
+</div>
