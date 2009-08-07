@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20090727173649) do
   end
 
   create_table "guests", :force => true do |t|
-    t.string   "prefix"
+    t.string   "salutation"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
