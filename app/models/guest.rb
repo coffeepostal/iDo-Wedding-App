@@ -37,7 +37,7 @@ class Guest < ActiveRecord::Base
   end
   
   def full_name
-    [salutation, name].compact.join(' ')
+    [salutation, name].reject(&:blank?).join(' ')
   end
   
   private
