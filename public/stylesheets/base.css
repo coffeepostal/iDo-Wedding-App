@@ -99,7 +99,9 @@ p a {  }
 /****************************************/
 /*		Form Styles						*/
 /****************************************/
-
+form { margin-top: 1em; }
+fieldset { margin-bottom: 1em; border: 1px dotted #333; border-width: 0 0 1px; }
+.row { display: block; }
 
 /****************************************/
 /*		Table Styles					*/
@@ -124,3 +126,4 @@ img { margin: 0px; border: none; }
 /*		Misc Styles				*/
 /********************************/
 .clear { clear: both; }
+.column { float: left; margin-right: 1em; }

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20090727173649) do
     t.string   "salutation"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "suffix"
     t.string   "email"
     t.string   "pin"
     t.boolean  "admin",      :default => false, :null => false

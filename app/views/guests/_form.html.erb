@@ -1,15 +1,27 @@
 <%= form.error_messages %>
 
-<p>
-	<%= form.label :name %><br />
-	<%= form.select :salutation, options_from_collection_for_select(Guest::SALUTATIONS, :to_s, :to_s), :include_blank => true %>
-	<%= form.text_field :name %>
-</p>
+<%- field_set_tag 'Name & Email' do -%>
+  <div class="row">
+    <p class="column">
+      <%= form.label :salutation %><br />
+    	<%= form.select :salutation, options_from_collection_for_select(Guest::SALUTATIONS, :to_s, :to_s, form.object.salutation), :include_blank => true %>
+    </p>
+    <p class="column">
+    	<%= form.label :name %><br />
+  	  <%= form.text_field :name %>
+  	</p>
+  	<p class="column">
+  	  <%= form.label :suffix %><br />
+  	  <%= form.text_field :suffix, :length => 4, :style => 'width:40px;' %>
+  	</p>
+  	<div class="clear"></div>
+  </div>
 
-<p>
-	<%= form.label :email %><br />
-	<%= form.text_field :email %>
-</p>
+  <p>
+  	<%= form.label :email %><br />
+  	<%= form.text_field :email %>
+  </p>
+<%- end -%>
 
 <%- field_set_tag 'Address' do -%>
   <%- form.object.build_address if form.object.address.nil? -%>
