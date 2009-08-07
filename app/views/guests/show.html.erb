@@ -29,15 +29,40 @@
 		<h3>RSVP</h3>
 		<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
 			<%- if @guest.rsvp.attending? -%>
-				<p>Yes,  
-					<%- if @guest.rsvp.number_attending == 1 -%>
-					I will be attending by myself.
-					<%- elsif @guest.rsvp.number_attending == 2 -%>
-					I will be attending with a date.
-					<%- else -%>
-					all <%= @guest.rsvp.number_attending.to_word %> will be attending.
-					<%- end -%>
-				</p>
+				<%- if @guest.rsvp.number_attending == 1 -%>
+				<p>Yes, I will be attending by myself.</p>
+				<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
+				<iframe width="840" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				<noscript>
+					<ul class="address">
+						<li>Lairmont Manor</li>
+						<li>405 Fieldston Road</li>
+						<li>Bellingham, WA 98225</li>
+					</ul>
+				</noscript>
+				<%- elsif @guest.rsvp.number_attending == 2 -%>
+				<p>Yes, I will be attending with a date.</p>
+				<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
+				<iframe width="840" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				<noscript>
+					<ul class="address">
+						<li>Lairmont Manor</li>
+						<li>405 Fieldston Road</li>
+						<li>Bellingham, WA 98225</li>
+					</ul>
+				</noscript>
+				<%- else -%>
+				<p>Yes, all <%= @guest.rsvp.number_attending.to_word %> will be attending.</p>
+				<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
+				<iframe width="840" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				<noscript>
+					<ul class="address">
+						<li>Lairmont Manor</li>
+						<li>405 Fieldston Road</li>
+						<li>Bellingham, WA 98225</li>
+					</ul>
+				</noscript>
+				<%- end -%>
 			<%- else -%>
 				<p>No, I'm sorry, 
 					<%- if @guest.rsvp.number_attending == 1 -%>
