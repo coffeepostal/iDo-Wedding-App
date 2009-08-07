@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20090727173649) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20090727173649) do
     t.integer  "guest_id"
     t.boolean  "attending"
     t.integer  "number_attending"
+    t.integer  "max_number_attending", :default => 2, :null => false
     t.boolean  "group_rsvp"
     t.boolean  "admin_rsvp"
     t.datetime "created_at"
