@@ -1,1 +1,9 @@
-<h1>New Address</h1>
+<h1>New Address for <%= @guest.name %></h1>
+
+<%- form_for @address do |form| -%>
+  <%= hidden_field_tag :guest_id, params[:guest_id] %>
+  <%= render 'form', :address => form %>
+  <%= form.submit 'Save' %>
+<%- end -%>
+
+<%= link_to 'Back', admin_guest_path(@guest) %>

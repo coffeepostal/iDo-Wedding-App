@@ -6,12 +6,14 @@ class Guest < ActiveRecord::Base
   # accept attributes for our address, gift, and RSVP via one form
   accepts_nested_attributes_for :address, :gift, :rsvp
   
+  SALUTATIONS = %w(Dr. Mr. Mrs. Miss Rev.)
+  
   attr_protected :admin
   
   # Validating the guest form fields aren't empty.
   validates_presence_of :name
   validates_presence_of :email, :unless => lambda {|guest| guest.admin?}
-  validates_associated :address
+  validates_associated :address, :rsvp
   
   before_create :generate_pin
 
@@ -35,26 +37,8 @@ class Guest < ActiveRecord::Base
   end
   
   def full_name
-    [prefix, name].compact.join(' ')
+    [salutation, name].compact.join(' ')
   end
-
-  # def address=(address_params)
-  #   return if address_params.all?(&:blank?)
-  #   address = self.address || self.build_address
-  #   address.update_attributes(address_params) 
-  # end
-  
-  # def gift=(gift_params)
-  #   return if gift_params.all?(&:blank?)
-  #   gift = self.gift || self.build_gift
-  #   gift.update_attributes(gift_params)
-  # end
-  
-  # def rsvp=(rsvp_params)
-  #   return if rsvp_params.all?(&:blank?)
-  #   rsvp = self.rsvp || self.build_rsvp
-  #   rsvp.update_attributes(rsvp_params)
-  # end
   
   private
   

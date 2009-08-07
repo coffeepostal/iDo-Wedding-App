@@ -2,7 +2,7 @@
 
 <p>
 	<%= form.label :name %><br />
-	<%= form.select :prefix, [["", ""], ["Dr.", "Dr. "], ["Mr.", "Mr. "], ["Mrs.", "Mrs. "], ["Miss", "Miss "], ["Rev.", "Rev. "]] %>
+	<%= form.select :salutation, options_from_collection_for_select(Guest::SALUTATIONS, :to_s, :to_s), :include_blank => true %>
 	<%= form.text_field :name %>
 </p>
 
@@ -12,21 +12,24 @@
 </p>
 
 <%- field_set_tag 'Address' do -%>
-	<%- form.fields_for @guest.address || Address.new do |address| -%>
+  <%- form.object.build_address if form.object.address.nil? -%>
+	<%- form.fields_for :address do |address| -%>
 		<%= render 'addresses/form', :address => address %>
 	<%- end -%>
 <%- end -%>
 
 <%- if @admin -%>
 	<%- field_set_tag 'Gift' do -%>
-		<%- form.fields_for @guest.gift || Gift.new do |gift| -%>
+	  <%- form.object.build_gift if form.object.gift.nil? -%>
+		<%- form.fields_for :gift do |gift| -%>
 			<%= render 'gifts/form', :gift => gift %>
 		<%- end -%>
 	<%- end -%>
 <%- end -%>
 
 <%- field_set_tag 'Rsvp' do -%>
-	<%- form.fields_for @guest.rsvp || Rsvp.new do |rsvp| -%>
+  <%- form.object.build_rsvp if form.object.rsvp.nil? -%>
+	<%- form.fields_for :rsvp do |rsvp| -%>
 		<%= render 'rsvps/form', :rsvp => rsvp %>
 	<%- end -%>
 <%- end -%>

@@ -2,7 +2,7 @@
 
 <p>
 	<%= rsvp.label :attending, 'Will you be attending?' %><br />
-	<%= rsvp.select :attending, options_for_select([['', nil], ['No', false], ['Yes', true]], rsvp.object.attending?) %>
+	<%= rsvp.select :attending, options_from_collection_for_select(Rsvp::ATTENDING_MAP, :first, :last, rsvp.object.attending), :include_blank => true %>
 </p>
 
 <p>

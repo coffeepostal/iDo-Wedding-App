@@ -26,7 +26,7 @@
 	<%- end -%>
 
 	<h3>RSVP</h3>
-	<%- if @guest.rsvp.present? -%>
+	<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
 		<%- if @guest.rsvp.attending? -%>
 			<p>Yes,  
 				<%- if @guest.rsvp.number_attending == 1 -%>
