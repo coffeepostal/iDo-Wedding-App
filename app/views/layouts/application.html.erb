@@ -7,8 +7,8 @@
 	<%= stylesheet_link_tag 'base' %>
 </head>
 <body>
-
-	<p style="color: green"><%= flash[:notice] %></p>
+	
+	<%= content_tag(:div, flash[:notice], :id => 'flash') if flash[:notice] %>
 	
 	<%- if @admin -%>
 	<div id="admin-nav">

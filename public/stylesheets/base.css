@@ -32,8 +32,9 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dd, dt, table, td, th, tr, form
 /********************************/
 /*		Layout Styles			*/
 /********************************/
-body { background-color: #222; text-align: center; margin: 50px auto; font-family: Helvetica, sans-serif; color: #222; }
+body { background-color: #222; text-align: center; margin: 0px auto; font-family: Georgia, serif; color: #222; }
 #container { background-color: #F2F5E6; width: 1024px; margin: 0 auto; text-align: left; }
+#flash { background: url(/images/bg-flash.png) bottom center no-repeat; position: absolute; top: 0px; width: 500px; padding: 10px 50px; }
 #header { height: 100px; }
 #content { margin: 0px 50px; }
 #footer { height: 100px; }
@@ -95,11 +96,6 @@ p a {  }
 /****************************************/
 /*		Form Styles						*/
 /****************************************/
-label { width: 130px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; color: #404040; float: left; text-transform: uppercase; text-align: right; }
-.form_name, .form_email { width: 290px; border: inset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; color: #404040; float: left; }
-.form_comment { width: 290px; border: inset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 12px; line-height: 16px; color: #404040; float: left; }
-button { border: outset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; color: #404040; text-transform: uppercase; padding: 5px; margin-left: 130px; }
-button:hover { border: inset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; padding: 5px; background-color: #404040; }
 
 
 /****************************************/

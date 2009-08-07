@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h2>Login</h2>
 
 <%- form_for @guest, :url => login_path do |f| -%>
 	<%= content_tag :p, flash[:error], :style => 'color: red;' if flash[:error] %>
