@@ -34,11 +34,11 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dd, dt, table, td, th, tr, form
 /********************************/
 body { background-color: #222; text-align: center; margin: 0px auto; font-family: Georgia, serif; color: #222; }
 #container { background-color: #F2F5E6; width: 1024px; margin: 0 auto; text-align: left; }
-#flash { background: url(/images/bg-flash.png) bottom center no-repeat; position: absolute; top: 0px; width: 500px; padding: 10px 50px; }
+#flash { background: url(/images/bg-flash.png) bottom center no-repeat; position: absolute; top: 0px; left: 50%; width: 500px; padding: 20px 50px; color: #FFF; margin-left: -250px; z-index: 99; }
 #header { height: 100px; }
 #content { margin: 0px 50px; }
 #footer { height: 100px; }
-#admin-nav { position: absolute; top: 0px; right: 0px; width: 1024px; }
+#admin-nav { width: 1024px; background-color: #222; margin: 10px 0; }
 .admin-manage-guest-box { padding: 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
 
 
@@ -76,8 +76,9 @@ p { font-size: 11px; line-height: 18px; margin-left: 10px; margin-right: 10px; }
 ul {  }
 li {  }
 #admin-nav ul { list-style: none; padding: 0; margin: 0; }
-#admin-nav li { float: left; margin: 0 0 0 1px; }
-#admin-nav li a { background: url(/images/bg-admin-nav.png) bottom left no-repeat #F2F5E6; height: 2em; line-height: 2em; float: left; width: 200px; display: block; color: #222; text-decoration: none; text-align: center; }
+#admin-nav li { float: left; margin: 0; }
+#admin-nav li a { background: #222; height: 2em; line-height: 2em; float: left; width: 200px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
+#admin-nav li a:hover { background: #F2F5E6; color: #222; }
 /* Hide from IE5-Mac \*/
 	#admin-nav li a { float: none; }
 /* End hide */
@@ -120,4 +121,4 @@ img { margin: 0px; border: none; }
 /********************************/
 /*		Misc Styles				*/
 /********************************/
-.clear {  clear: both; }
+.clear { clear: both; }

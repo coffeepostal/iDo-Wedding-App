@@ -10,22 +10,22 @@
 	
 	<%= content_tag(:div, flash[:notice], :id => 'flash') if flash[:notice] %>
 	
-	<%- if @admin -%>
-	<div id="admin-nav">
-		<ul>
-			<li><%= link_to 'Manage Guests', admin_guests_path %></li>
-			<li><%= link_to 'Manage RSVPs', rsvps_path %></li>
-			<li><%= link_to 'Manage Gifts', gifts_path %></li>
-			<li><%= link_to 'Manage Thank Yous', thank_yous_path %></li>
-			<li><%= link_to 'Logout', logout_path %></li>
-		</ul>
-	</div>
-	<%- end -%>
-	
 	<div id="container">
 		<div id="header">
 			<h1>iDo - Le Wedding App</h1>
 		</div>
+		<%- if @admin -%>
+		<div id="admin-nav">
+			<ul>
+				<li><%= link_to 'Manage Guests', admin_guests_path %></li>
+				<li><%= link_to 'Manage RSVPs', rsvps_path %></li>
+				<li><%= link_to 'Manage Gifts', gifts_path %></li>
+				<li><%= link_to 'Manage Thank Yous', thank_yous_path %></li>
+				<li><%= link_to 'Logout', logout_path %></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<%- end -%>
 		<div id="content">
 			<%= yield %>
 		</div>
