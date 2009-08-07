@@ -41,7 +41,7 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 #footer { padding: 50px; }
 #logout { margin: 5px; padding: 5px; float: right; }
 #admin-nav { width: 1024px; background-color: #222; margin: 0; }
-.admin-manage-guest-box { padding: 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
+.admin-manage-guest-box { padding: 0 5px 5px 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
 
 
 /********************************/
@@ -64,6 +64,7 @@ quote { background: #DBDED0; font-size: 14px; line-height: 18px; font-style: ita
 .bold { font-weight: bold; }
 .fancy { font-family: Georgia, "Times New Roman", Times, serif; font-style: italic; font-weight: normal; }
 .small { font-size: 14px; }
+.emphasis { font-style: italic; background: #DBDED0; padding: 2px; }
 
 
 /********************************/
@@ -102,8 +103,10 @@ p a {  }
 /*		Form Styles						*/
 /****************************************/
 form { margin-top: 1em; }
-fieldset { margin-bottom: 1em; border: 1px dotted #333; border-width: 0 0 1px; }
-.row { display: block; }
+fieldset { margin-bottom: 10px; }
+.text_field_pin { font-size: 65px; color: #222; padding: 5px; }
+.text_field_verify { font-size: 65px; color: #222; padding: 5px; }
+
 
 /****************************************/
 /*		Table Styles					*/

@@ -2,28 +2,32 @@
 	<h2>Hello</h2>
 	<p>Diana and I would like to welcome you to the RSVP section of AdamGotDiana.Com, or Our Wedding site.</p>
 	<p>We appreciate you coming all the way down here to the site. We know we didn't give you the exact time, nor the location of our wedding in the invitation. Rest assured, as soon as you complete the RSVP process, you will be provided with these, and other details of the wedding.</p>
-	<p>So, let's get started. First, grab the RSVP card that came in your invitation, it will look like this:</p>
+	<h2>Step 1 - The RSVP Card:</h2>
+	<p>So, let's get started. First, <span class="emphasis">grab the RSVP card</span> that came in your invitation, it will look something like this:</p>
 	<p class="center"><%= image_tag("img-rsvp-rsvpCardSample.jpg") %></p>
-	<p>As you can see there is a handwritten, four-digit number within the box in the middle. That's your personal PIN number. It makes sure that you, and only you, can see and change the details of your RSVP.</p>
-	<p>Second, type that four-digit PIN number into the box below labeled "PIN":</p>
+	<h2>Step 2 - The PIN Number:</h2>
+	<p>As you can see there is a <span class="emphasis">handwritten, four-digit number within the box in the middle.</span> That's your personal <span class="emphasis">PIN</span> number. It makes sure that you, and only you, can see and change the details of your RSVP.</p>
+	<p>Type that four-digit PIN number into the box below labeled "PIN":</p>
 
 	<%- form_for @guest, :url => login_path do |f| -%>
 		<%= content_tag :p, flash[:error], :style => 'color: red;' if flash[:error] %>
 	
 		<p>
 			<%= f.label :pin, 'PIN' %><br />
-			<%= f.text_field :pin %>
+			<%= f.text_field :pin, :class => "text_field_pin", :size => 4 %>
 		</p>
 		
+		<h2>Step 3 - Verification:</h2>
 		<p>Now, for verification, type in the last name of the first individual listed on your invitation. For example, if your invitation was addressed like this:</p>
 		<p><quote>Mr. Adam Farnsworth & Miss Diana Wheeler</quote></p>
 		<p>The last name you'd type below would be "Farnsworth". Oh, and be sure to capitalize the first letter.</p>
 		
 		<p>
 			<%= f.label :last_name, 'Last Name' %><br />
-			<%= f.text_field :last_name %>
+			<%= f.text_field :last_name, :class => "text_field_verify", :size => 12 %>
 		</p>
-		
-		<p><%= f.submit 'Login' %></p>
+		<h2>Step 4 - Login:</h2>
+		<p>Now, we need to login. To do so, click the large button below that says, "Click Here to Login".</p>
+		<p><%= f.submit 'Click Here to Login' %></p>
 	<%- end -%>
 </div>

@@ -10,8 +10,12 @@
 	<%= content_tag(:div, flash[:notice], :id => 'flash') if flash[:notice] %>
 	<div id="container">
 		<div id="header">
-			<%- if @guest -%>
-			<div id="logout"><h3><%= link_to 'Logout', logout_path %></h3></div>
+			<%- if @admin -%>
+			<%- else -%>
+				<%- if @guest -%>
+				<div id="logout"><h3><%= link_to 'Logout', logout_path %></h3></div>
+				<%- else -%>
+				<%- end -%>
 			<%- end -%>
 			
 		</div>
