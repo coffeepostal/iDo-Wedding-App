@@ -1,7 +1,11 @@
-<h1>Manage Guests</h1>
+<h2>Manage Guests</h2>
 
 <%- for guest in @guests -%>
-	<p><%= link_to guest.full_name, admin_guest_path(guest) %></p>
+	<div class="admin-manage-guest-box">
+		<h3><%= link_to guest.full_name, admin_guest_path(guest) %></h3>
+		<ul class="address"><%= html_for_address(guest.address) %></ul>
+		<h4>PIN: <%= guest.pin %></h4>
+	</div>
 <%- end -%>
 
 <%= link_to 'Add a Guest', new_admin_guest_path %> |

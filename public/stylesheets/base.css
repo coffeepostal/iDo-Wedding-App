@@ -1,0 +1,127 @@
+/************************************************/
+/*												*/
+/*		CSS Document							*/
+/*		Original Design by Adam Farnsworth		*/
+/*		info@adamfarnsworth.com					*/
+/*		08/06/2009								*/
+/*		© Adam Farnsworth						*/
+/*												*/
+/************************************************/
+
+/************************************************/
+/*		Theivery Manifesto						*/
+/************************************************/
+/*												*/
+/*		Honestly, don't steal this design,		*/
+/*		just do your own. It's really kind		*/
+/*		of lame to have to be so unoriginal		*/
+/*		that you just go to a site you think	*/
+/*		is cool, change a few colors and		*/
+/*		call it your own. It's dumb,			*/
+/*		don't do it.							*/
+/*												*/
+/************************************************/
+
+
+/********************************/
+/*		Mass Styles				*/
+/********************************/
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, dd, dt, table, td, th, tr, form, div, img { margin: 0; padding: 0; }
+
+
+/********************************/
+/*		Layout Styles			*/
+/********************************/
+body { background-color: #222; text-align: center; margin: 50px auto; font-family: Helvetica, sans-serif; color: #222; }
+#container { background-color: #F2F5E6; width: 1024px; margin: 0 auto; text-align: left; }
+#header { height: 100px; }
+#content { margin: 0px 50px; }
+#footer { height: 100px; }
+#admin-nav { position: absolute; top: 0px; right: 0px; width: 1024px; }
+.admin-manage-guest-box { padding: 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
+
+
+/********************************/
+/*		Text Styles				*/
+/********************************/
+h1 { font-size: 36px; line-height: 36px;}
+h2 { font-size: 28px; line-height: 28px; }
+h3 { font-size: 12px; font-weight: bold; padding-top: 10px; }
+h4 { font-size: 12px; font-weight: normal; }
+h5 {  }
+h6 { font-size: 8px; padding: 5px; text-transform: uppercase; text-align: right; }
+p { font-size: 11px; line-height: 18px; margin-left: 10px; margin-right: 10px; }
+
+
+/********************************/
+/*		Generic Text Styles		*/
+/********************************/
+.bold { font-weight: bold; }
+.fancy { font-family: Georgia, "Times New Roman", Times, serif; font-style: italic; font-weight: normal; }
+.small { font-size: 11px; }
+
+
+/********************************/
+/*		Paragraph Styles		*/
+/********************************/
+.center { text-align: center; }
+.justified { text-align: justify; }
+.left { text-align: left; }
+.right { text-align: right; }
+
+/********************************/
+/*		List Styles				*/
+/********************************/
+ul {  }
+li {  }
+#admin-nav ul { list-style: none; padding: 0; margin: 0; }
+#admin-nav li { float: left; margin: 0 0 0 1px; }
+#admin-nav li a { background: url(/images/bg-admin-nav.png) bottom left no-repeat #F2F5E6; height: 2em; line-height: 2em; float: left; width: 200px; display: block; color: #222; text-decoration: none; text-align: center; }
+/* Hide from IE5-Mac \*/
+	#admin-nav li a { float: none; }
+/* End hide */
+ul.address { list-style: none; padding: 0; margin: 0; }
+ul.address li { font-size: 11px; }
+
+
+/********************************/
+/*		Link Styles				*/
+/********************************/
+a { text-decoration: none; color: #333; }
+a:hover {  }
+p a {  }
+
+
+/****************************************/
+/*		Form Styles						*/
+/****************************************/
+label { width: 130px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; color: #404040; float: left; text-transform: uppercase; text-align: right; }
+.form_name, .form_email { width: 290px; border: inset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; color: #404040; float: left; }
+.form_comment { width: 290px; border: inset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 12px; line-height: 16px; color: #404040; float: left; }
+button { border: outset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; color: #404040; text-transform: uppercase; padding: 5px; margin-left: 130px; }
+button:hover { border: inset 2px #EEE; font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 20px; line-height: 20px; padding: 5px; background-color: #404040; }
+
+
+/****************************************/
+/*		Table Styles					*/
+/****************************************/
+.table_title {  }
+.table_01 {  }
+.table_02 { background-color: #222; }
+.table_date { width: 100px; padding: 5px; }
+.table_time { padding: 5px; }
+.table_info { padding: 5px; }
+.table_location { width: 140px; padding: 5px; }
+
+
+/********************************/
+/*		Image Styles			*/
+/********************************/
+img { margin: 0px; border: none; }
+.tabled_img { float: left; }
+
+
+/********************************/
+/*		Misc Styles				*/
+/********************************/
+.clear {  clear: both; }
