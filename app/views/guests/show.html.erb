@@ -16,7 +16,7 @@
 	
 		<h3>Email Address:</h3>
 		<%- if @guest.email.present? -%>
-			<p><%=h @guest.email %></p>
+			<p><%= mail_to @guest.email, nil, :replace_at => " [at] ", :replace_dot => " dot ", :subject => "AdamGotDiana.Com - Diana and Adam's Wedding Site" %></p>
 		<%- else -%>
 			<p>No email address entered, please add one: <%= link_to 'Enter Email Address.', edit_guest_path %></p>
 		<%- end -%>
@@ -33,11 +33,11 @@
 					<%- if @guest.rsvp.number_attending == 1 -%>
 					I will be attending by myself.
 					<%- elsif @guest.rsvp.number_attending == 2 -%>
-					I will be attending with a date
+					I will be attending with a date.
 					<%- else -%>
-					all <%= @guest.rsvp.number_attending.to_word %> will be attending
+					all <%= @guest.rsvp.number_attending.to_word %> will be attending.
 					<%- end -%>
-				.</p>
+				</p>
 			<%- else -%>
 				<p>No, I'm sorry, 
 					<%- if @guest.rsvp.number_attending == 1 -%>
