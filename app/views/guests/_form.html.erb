@@ -30,7 +30,7 @@
 	<%- end -%>
 <%- end -%>
 
-<%- if @admin -%>
+<%- if @admin_user -%>
 	<%- field_set_tag 'Gift' do -%>
 	  <%- form.object.build_gift if form.object.gift.nil? -%>
 		<%- form.fields_for :gift do |gift| -%>

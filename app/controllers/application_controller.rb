@@ -8,32 +8,37 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :first_name, :last_name, :name, :email, :pin, :line_1, :line_2, :city, :state, :zip
   
-  before_filter :current_guest, :current_admin
+  helper_method :session_guest, :admin_user
   
-  helper_method :current_guest, :current_admin
+  before_filter :session_guest, :admin_user
   
-  # find our current guest and set our @guest instance variable
-  def current_guest
-    @guest ||= Guest.find(session[:guest_id]) rescue nil
+  # find our current guest and set our @session_guest instance variable
+  def session_guest
+    @session_guest ||= Guest.find(session[:guest_id], :include => [:address, {:gift => :thank_you}, :rsvp]) rescue nil
   end
   
   # redirect if no guest is logged in
-  def require_guest
-    redirect_to login_path unless current_guest
+  def require_session_guest
+    redirect_to login_path unless session_guest
   end
   
   # redirect if a guest is logged in
-  def require_no_guest
-    redirect_to guest_path if current_guest
+  def require_no_session_guest
+    redirect_to guest_path if session_guest
   end
   
-  # find our current admin user and set the @admin instance variable
-  def current_admin
-    @admin ||= current_guest if current_guest && current_guest.admin?
+  # is our current @session_guest also an admin user?
+  def admin_user
+    @admin_user ||= session_guest if session_guest && session_guest.admin?
   end
   
   # require an admin user
-  def require_admin
-    redirect_to guest_path unless current_admin
+  def require_admin_user
+    redirect_to guest_path unless admin_user
+  end
+  
+  # load an @guest instance variable from params[:guest_id]
+  def load_guest
+    @guest = Guest.find(params[:guest_id])
   end
 end

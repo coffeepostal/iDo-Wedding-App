@@ -10,9 +10,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :guest, :as => 'me', :only => [:show, :edit, :update]
   
-  map.resources :guests, :name_prefix => 'admin_' do |guests|
+  map.resources :guests, :controller => 'admin_guests', :name_prefix => 'admin_', :collection => {:import => [:get, :post]} do |guests|
     guests.resource :address, :rsvp
     guests.resources :gifts, :has_one => :thank_you
   end
-  map.resources :addresses, :gifts, :rsvps, :thank_yous
+  
+  map.resources :addresses, :gifts, :rsvps, :thank_yous, :only => :index
 end

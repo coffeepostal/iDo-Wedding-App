@@ -1,4 +1,7 @@
 class Guest < ActiveRecord::Base
+  nullify :salutation, :suffix, :email
+  nullify :address, :gift, :rsvp
+  
   has_one :address
   has_one :gift
   has_one :rsvp
@@ -22,6 +25,12 @@ class Guest < ActiveRecord::Base
 
   # for all def self.whatever methods
   class << self
+    
+    # perform a special find for login info
+    def find_for_login(last_name, pin)
+      first(:conditions => ['guests.pin = ? and guests.last_name like ?', pin, last_name])
+    end
+    
     # check that a given PIN isn't already in use by another record
     def pin_exists?(pin)
       all.map(&:pin).include?(pin)
@@ -38,6 +47,27 @@ class Guest < ActiveRecord::Base
   
   def full_name
     [salutation, name, suffix].compact.join(' ').strip
+  end
+  
+  def safe_email
+    return nil if email.nil?
+    email.gsub('@', ' [at] ').gsub('.', ' [dot] ')
+  end
+  
+  def has_rsvped?
+    rsvp.present? && !rsvp.attending.nil?
+  end
+  
+  def is_attending?
+    has_rsvped? && rsvp.attending?
+  end
+  
+  def has_address?
+    address.present?
+  end
+  
+  def has_gift?
+    gift.present?
   end
   
   private

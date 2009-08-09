@@ -94,8 +94,8 @@ ul.address li { font-size: 14px; }
 /********************************/
 /*		Link Styles				*/
 /********************************/
-a { text-decoration: none; color: #333; }
-a:hover {  }
+a { text-decoration: none; color: #A12B2B; }
+a:hover { background-color: #A12B2B; color: #F2F5E6; }
 p a {  }
 
 
@@ -132,3 +132,11 @@ img { margin: 0px; border: none; }
 /********************************/
 .clear { clear: both; }
 .column { float: left; margin-right: 1em; }
+
+
+/*************************
+* RSVP Management Styles *
+*************************/
+.no-rsvp { background-color: #ECEB99; }
+.rsvp-attending { background-color: #C7EC99; }
+.rsvp-not-attending { background-color: #EC9B99; }

@@ -1,8 +1,10 @@
-<h1>Updat<%= @admin ? "ing #{@guest.first_name}’s" : 'e Your' %> Info</h1>
+<%- guest = @guest || @session_guest -%>
 
-<%- form_for @guest, :url => @admin ? admin_guest_path(@guest) : guest_path do |form| -%>
+<h1>Update <%= @admin_user ? "#{guest.first_name}’s" : 'Your' %> Info</h1>
+
+<%- form_for guest, :url => @admin_user ? admin_guest_path(guest) : guest_path do |form| -%>
 	<%= render form %>
 	<p><%= form.submit 'Update' %></p>
 <%- end -%>
 
-<%= link_to 'Back', @admin ? admin_guest_path(@guest) : guest_path %>
+<%= link_to 'Back', @admin_user ? admin_guest_path(guest) : guest_path %>

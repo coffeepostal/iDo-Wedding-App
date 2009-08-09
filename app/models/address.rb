@@ -1,4 +1,6 @@
 class Address < ActiveRecord::Base
+  nullify :line_2, :state, :province, :additional_names
+  
   belongs_to :guest
   
   COUNTRY_OPTIONS = ['United States', 'Canada', 'Italy']
