@@ -1,0 +1,39 @@
+= nullify
+
+<tt>nullify</tt> makes it easy to clean up blank attributes that result from creating ActiveRecord objects directly from form params. You may specify any number of attributes (including non-column attributes) to nullify.
+
+== Installation
+
+  script/plugin install git://github.com/laserlemon/nullify.git
+
+== Example
+
+In your model:
+
+  class User < ActiveRecord::Base
+    validates_presence_of :first_name, :last_name
+    nullify :middle_name
+    
+    def name
+      [first_name, middle_name, last_name].compact.join(' ')
+    end
+  end
+
+In your "new" view:
+
+  <% form_for @user do |f| %>
+    <%= f.text_field :first_name %>
+    <%= f.text_field :middle_name %>
+    <%= f.text_field :last_name %>
+    <%= submit_tag 'Save' %>
+  <% end %>
+
+In your controller:
+
+  def create
+    @user = User.create(params[:user])
+  end
+
+In your "show" view:
+
+  <%=h @user.name %>
