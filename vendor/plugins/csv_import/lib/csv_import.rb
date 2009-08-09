@@ -1,40 +1,36 @@
 require 'csv'
 
-# Include this in a controller (e.g. include Dallas::CsvImport)
-module Dallas
-  module CsvImport
-
-  	def each_csv_row(csv_file_param = :csv_file, rescue_exceptions = true)
-  	  return [] unless request.post? && params[csv_file_param]
-  	  
-  	  csv_file_param = :csv_file if csv_file_param.nil?
-			@csv_rows_imported = 0
+# Include this in a controller
+module CsvImport
+	def each_csv_row(rescue_exceptions = true)
+		if request.post?
+			@rows_imported = 0
 			ActiveRecord::Base.transaction do
 				bad = false
-				@csv_field_names = []
-				CSV.parse(params[csv_file_param].read).each_with_index do |row, index|
-				  if index.zero?
-				    @csv_field_names = (params[:field_names_in_first_row] ? row : (0..(row.length - 1)).to_a)
-				    next if params[:field_names_in_first_row]
-				  end
-
-					begin
-					  row_hash = @csv_field_names.zip(row).inject({}) {|hash, pair| hash[pair.first] = pair.last; hash} unless @csv_field_names.blank?
-						yield row_hash
-						@csv_rows_imported += 1
-					rescue Exception => e
-					  if rescue_exceptions
-							@csv_bad_rows ||= []
-							@csv_bad_rows << (row + [e])
-							bad = true
+				unless params['field_names_in_first_row'] == '1'
+					@field_names = []
+				end
+				CSV.parse(params['csv'].read).each_with_index do |row, i|
+					if i == 0 and params['field_names_in_first_row'] == '1'
+						@field_names = row
+					else
+						if rescue_exceptions
+							begin
+								yield row
+								@rows_imported += 1
+							rescue Exception => exc
+								@bad_rows ||= []
+								@bad_rows << (row + [exc])
+								bad = true
+							end
 						else
-						  raise e
+							yield row
+							@rows_imported += 1
 						end
 					end
 				end
 				raise ActiveRecord::Rollback if bad
 			end
-  	end
-	
-  end
+		end
+	end
 end
