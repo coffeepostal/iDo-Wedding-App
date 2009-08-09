@@ -57,46 +57,56 @@ class AdminGuestsController < ApplicationController
   end
   
   def import
-    if request.post?
+    if request.post?      
       Guest.non_admin.all.each(&:destroy) if params[:destroy_all_non_admin_first]
-      Guest.destroy_all if params[:destroy_all_first]
-    
-      each_csv_row do |row|
+      # Guest.destroy_all if params[:destroy_all_first]
+      
+      each_csv_row do |row_hash|        
         # Guest info
-        salutation, first_name, last_name, suffix, email = row[0..4]
-        guest = Guest.find_or_create_by_first_name_and_last_name(:first_name => first_name, :last_name => last_name)
-        guest.attributes = {:salutation => salutation, :suffix => suffix, :email => email}
-        # guest.admin if [1, '1', 't', 'true', true].include?(admin)
+        guest_attributes = row_hash.select do |k,v|
+          [:salutation, :first_name, :last_name, :name, :suffix, :email].include?(k.to_sym)
+        end.inject({}) do |memo, pair|
+          memo[pair.first.to_sym] = pair.last
+          memo
+        end
+        
+        first_name, last_name = (guest_attributes.keys.include?(:name) ?
+          guest_attributes[:name].split(' ', 2) :
+          [guest_attributes[:first_name], guest_attributes[:last_name]])
+        
+        guest = Guest.find_or_create_by_first_name_and_last_name(
+          :first_name => first_name,
+          :last_name => last_name
+        )
+        guest.attributes = guest_attributes
       
         # Address info
-        line_1, line_2, city, state, zip, country, province, additional_names = row[5..12]
+        address_attributes = row_hash.select do |k,v|
+          [:line_1, :line_2, :city, :state, :zip, :country, :province, :additional_names].include?(k.to_sym)
+        end.inject({}) do |memo, pair|
+          memo[pair.first.to_sym] = pair.last
+          memo
+        end
+        
         address = guest.address || guest.build_address
-        address.attributes = {
-          :line_1 => line_1,
-          :line_2 => line_2,
-          :city => city,
-          :state => state,
-          :zip => zip,
-          :country => country,
-          :province => province,
-          :additional_names => additional_names
-        }
+        address.attributes = address_attributes
       
         # RSVP info
-        attending, number_attending = row[13,14]
+        rsvp_attributes = row_hash.select do |k,v|
+          [:attending, :number_attending].include?(k.to_sym)
+        end.inject({}) do |memo, pair|
+          memo[pair.first.to_sym] = pair.last
+          memo
+        end
+        
         rsvp = guest.rsvp || guest.build_rsvp
-        rsvp.attributes = {
-          :attending => attending,
-          :number_attending => number_attending,
-          :admin_rsvp => [1,0,'1','0','t','f','true','false',true,false].include?(attending)
-        }
+        rsvp.attributes = rsvp_attributes.update(
+          :admin_rsvp => [1,0,'1','0','t','f','true','false',true,false].include?(rsvp_attributes[:attending])
+        )
       
         # save it all!
         guest.save
       end
-      
-      flash[:notice] = 'Guests successfully imported.'
-      redirect_to admin_guests_path
     end
   end
   
