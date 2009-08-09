@@ -9,7 +9,7 @@ class Guest < ActiveRecord::Base
   # accept attributes for our address, gift, and RSVP via one form
   accepts_nested_attributes_for :address, :gift, :rsvp
   
-  SALUTATIONS = %w(Dr. Mr. Mrs. Miss Rev. Sir. Pastor The)
+  SALUTATIONS = %w(Dr. Mr. Mrs. Miss Rev. Sir. Pastor Vicar The)
   
   attr_protected :admin
   

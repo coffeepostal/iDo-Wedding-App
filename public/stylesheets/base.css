@@ -52,7 +52,7 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 h1 { font-size: 36px; line-height: 36px; margin-left: 10px; }
 h2 { font-size: 28px; line-height: 28px; margin-left: 10px; }
 h3 { font-size: 14px; font-weight: bold; padding-top: 10px; margin-left: 10px; }
-h4 { font-size: 28px; font-weight: bold; margin-left: 10px; color: #F2F5E6; }
+h4 { font-family: Helvetica, sans-serif; font-size: 28px; font-weight: bold; color: #F2F5E6; }
 h5 {  }
 h6 { font-size: 8px; padding: 5px; text-transform: uppercase; text-align: right; }
 p { font-size: 14px; line-height: 18px; margin: 0 10px 10px 10px; }
