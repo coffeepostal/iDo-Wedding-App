@@ -15,6 +15,8 @@
 	</div>
 <%- end -%>
 
-<%= link_to 'Add a Guest', new_admin_guest_path %> |
-<%= link_to 'Import Guests from CSV', import_admin_guests_path %> |
-<%= link_to 'My Page', guest_path %>
+<div id="admin-actions">
+	<%= link_to 'Add a Guest', new_admin_guest_path %> |
+	<%= link_to 'Import Guests from CSV', import_admin_guests_path %> |
+	<%= link_to 'My Page', guest_path %>
+</div>
