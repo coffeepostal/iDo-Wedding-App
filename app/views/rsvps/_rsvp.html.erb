@@ -1,0 +1,19 @@
+<%- if guest.has_rsvped? -%>
+	<%- if guest.is_attending? -%>
+    <%= number_attending_content(rsvp) %>
+		<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
+    <%= wedding_location_map_content %>
+	<%- else -%>
+		<p>No, I’m sorry, <%= guest.rsvp.one? ? 'I' : 'we' %> won’t be able to attend.</p>
+	<%- end -%>
+
+	<%- if @admin_user -%>
+		<h3>This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</h3>
+	<%- end -%>
+	
+<%- else -%>
+	<p>
+	  <%= @admin_user ? "#{guest.name} has" : 'You have' %> not yet RSVP’d!<br />
+	  <%= link_to "RSVP#{' for them' if @admin_user}!", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path %>
+	</p>
+<%- end -%>

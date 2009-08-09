@@ -1,0 +1,29 @@
+<h2>Import Guests from a CSV file</h2>
+
+<p style="margin:1em 0;padding:0.5em 1em;background-color:#EC9B99;">
+  NOTE: This may not work every time (I’m not sure why).
+  If it does hang, just try clicking the submit button again.
+</p>
+
+<%- csv_form do -%>
+  <p>
+    <%= check_box_tag 'destroy_all_non_admin_first' %>
+    <%= label_tag 'destroy_all_non_admin_first', 'Destroy all non-admin Guest records before the import.' %>
+  </p>
+
+  <p>
+    <%= check_box_tag 'destroy_all_first' %>
+    <%= label_tag 'destroy_all_first', 'Destroy ALL Guest records before the import.' %>
+  </p>
+<%- end -%>
+
+<h3>For Example (though not everything has to be quoted):</h3>
+
+<div style="background:white;border:2px solid #222;border-width:2px 0;padding:0.25em 0.5em;overflow:auto;">
+  <pre>
+    salutation,first_name,last_name,suffix,email,line_1,line_2,city,state,zip,country,province,additional_names,attending,number_attending
+    "Mr.","Sly","Fox","","mr-sly-fox@example.com","123 Some Street","","New Brook","MA","00231","United States","","The Family Stone","",""
+    "","Some","Name","Jr.","some-name@example.com","456 Other Lane","Apt. 5","Portland","OR","97745","United States","","","1","1"
+    "Mrs.","Roberta","Cunningham","","robert@cunninghams.com","78334 Way Out There Blvd.","","Walla Walla","WA","99362","United States","","","0","2"
+  </pre>
+</div>

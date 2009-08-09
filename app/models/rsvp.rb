@@ -1,4 +1,6 @@
 class Rsvp < ActiveRecord::Base
+  nullify :number_attending
+  
   belongs_to :guest
   
   # don't allow some Hackety McHacker to raise (or lower) the number of people they can RSVP for
@@ -8,5 +10,17 @@ class Rsvp < ActiveRecord::Base
   
   def attending_response
     ATTENDING_MAP[self[:attending]] || self[:attending]
+  end
+  
+  def one?
+    number_attending == 1
+  end
+  
+  def two?
+    number_attending == 2
+  end
+  
+  def max?
+    number_attending == max_number_attending
   end
 end

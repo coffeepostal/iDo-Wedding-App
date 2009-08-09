@@ -1,1 +1,6 @@
-<h1>New RSVP</h1>
+<h1>RSVP for <%= @guest.full_name %></h1>
+
+<%- form_for @rsvp, :url => admin_guest_rsvp_path(@guest) do |form| -%>
+  <%= render form, :rsvp => form %>
+  <%= form.submit 'Save' %>
+<%- end -%>

@@ -1,94 +1,30 @@
+<%- guest = @guest || @session_guest
+    guest_is_admin = guest == @admin_user -%>
+
 <div id="main">
-	<%- if @admin -%>
-		<h2><%= @guest.full_name %></h2>
+	<%- if @admin_user -%>
+		<h2><%= guest.full_name %></h2>
 	<%- else -%>
-		<h2>Welcome, <%= @guest.full_name %></h2>
-		<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
-			<%- if @guest.rsvp.attending? -%>
-				<p class="status">Thank you for your RSVP. We're looking forward to seeing you at the wedding! If you need to change any details, you can always log back in here and make those changes.</p>
-			<%- else -%>
-				<p class="status">Thank you for your RSVP. We're sorry we won't see you at the wedding. If your situation changes, and you can come, feel free to log back in here and change your RSVP.</p>
-			<%- end -%>
-		<%- else -%>
-			<p class="status">Please confirm that all the information below is correct. If not, go ahead and click on the "Update My Info" button below.</p>
-		<%- end -%>
+		<h2>Welcome, <%= guest.full_name %></h2>
+		<%= guest_status_content(guest) %>
 	<%- end -%>
 
-	<%- unless @guest == @admin -%>
-		<h3>Mailing Address:</h3>
-		<%- if @guest.address.present? -%>
-			<ul class="address"><%= html_for_address(@guest.address) %></ul>
-		<%- else -%>
-			<p>No address entered, please add one: <%= link_to 'Enter Address.', edit_guest_path %></p>
-		<%- end -%>
+	<%- unless guest_is_admin -%>
+  	<h3>Mailing Address:</h3>
+    <%= render guest.address, :guest => guest %>
 	
 		<h3>Email Address:</h3>
-		<%- if @guest.email.present? -%>
-			<p><%= mail_to @guest.email, nil, :replace_at => " [at] ", :replace_dot => " dot ", :subject => "AdamGotDiana.Com - Diana and Adam's Wedding Site" %></p>
-		<%- else -%>
-			<p>No email address entered, please add one: <%= link_to 'Enter Email Address.', edit_guest_path %></p>
-		<%- end -%>
+		<%= guest_email_address_content(guest) %>
 
-		<%- if @admin -%>
+		<%- if @admin_user -%>
 			<h3>Gift</h3>
-			<p><%= @guest.gift.present? ? @guest.gift.gift : 'None yet!' %></p>
+			<%= render guest.gift, :guest => guest %>
 		<%- end -%>
 
 		<h3>RSVP</h3>
-		<%- if @guest.rsvp.present? && !@guest.rsvp.attending.nil? -%>
-			<%- if @guest.rsvp.attending? -%>
-				<%- if @guest.rsvp.number_attending == 1 -%>
-				<p>Yes, I will be attending by myself.</p>
-				<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
-				<iframe width="840" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-				<noscript>
-					<ul class="address">
-						<li>Lairmont Manor</li>
-						<li>405 Fieldston Road</li>
-						<li>Bellingham, WA 98225</li>
-					</ul>
-				</noscript>
-				<%- elsif @guest.rsvp.number_attending == 2 -%>
-				<p>Yes, I will be attending with a date.</p>
-				<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
-				<iframe width="840" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-				<noscript>
-					<ul class="address">
-						<li>Lairmont Manor</li>
-						<li>405 Fieldston Road</li>
-						<li>Bellingham, WA 98225</li>
-					</ul>
-				</noscript>
-				<%- else -%>
-				<p>Yes, all <%= @guest.rsvp.number_attending.to_word %> will be attending.</p>
-				<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
-				<iframe width="840" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=405+Fieldston+Rd+Bellingham,+WA+98225+(Lairmont+Manor)&amp;sll=48.710748,-122.509611&amp;sspn=0.006662,0.008948&amp;ie=UTF8&amp;ll=48.717866,-122.505369&amp;spn=0.01982,0.068665&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-				<noscript>
-					<ul class="address">
-						<li>Lairmont Manor</li>
-						<li>405 Fieldston Road</li>
-						<li>Bellingham, WA 98225</li>
-					</ul>
-				</noscript>
-				<%- end -%>
-			<%- else -%>
-				<p>No, I'm sorry, 
-					<%- if @guest.rsvp.number_attending == 1 -%>
-					I won't be able to attend.
-					<%- else -%>
-					we won't be able to attend.
-					<%- end -%>
-					</p>
-			<%- end -%>
-	
-			<%- if @admin -%>
-				<h3><%= @guest.rsvp.admin_rsvp? ? 'This guest was registered by an Admin.' : 'This guest was NOT registered by an Admin.' %></h3>
-			<%- end -%>
-		<%- else -%>
-			<p>You have not yet RSVP’d! <%= link_to 'RSVP!', edit_guest_path %></p>
-		<%- end -%>
+		<%= render guest.rsvp, :guest => guest %>
 
-		<%= link_to "Update #{@admin ? @guest.first_name + '’s' : 'My'} Info", @admin ? edit_admin_guest_path(@guest) : edit_guest_path %>
+		<%= link_to "Update #{@admin_user ? guest.first_name + '’s' : 'My'} Info", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path %>
 	<%- else -%>
 		<p>Hurray! You’re an admin user!</p>
 	<%- end -%>
