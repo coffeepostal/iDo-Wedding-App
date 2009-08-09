@@ -57,6 +57,7 @@ class AdminGuestsController < ApplicationController
   end
   
   def import
+    # only do the actual import if this is a POST request
     if request.post?      
       Guest.non_admin.all.each(&:destroy) if params[:destroy_all_non_admin_first]
       # Guest.destroy_all if params[:destroy_all_first]
