@@ -44,7 +44,7 @@ them from 0 to the length (- 1) of the first row:
 In your controller:
 
   class EmployeesController < ActionController::Base
-    include Dallas::CsvImport
+    include CsvImport
     
     def import_employee_records
       each_csv_row do |row_hash|

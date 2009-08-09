@@ -5,16 +5,22 @@
   If it does hang, just try clicking the submit button again.
 </p>
 
-<%- csv_form do -%>
+<%- form_tag import_admin_guests_path, :multipart => true do -%>
+  <%= csv_fields %>
+  
   <p>
     <%= check_box_tag 'destroy_all_non_admin_first' %>
     <%= label_tag 'destroy_all_non_admin_first', 'Destroy all non-admin Guest records before the import.' %>
   </p>
 
-  <p>
-    <%= check_box_tag 'destroy_all_first' %>
-    <%= label_tag 'destroy_all_first', 'Destroy ALL Guest records before the import.' %>
-  </p>
+  <%- unless true -%>
+    <p>
+      <%= check_box_tag 'destroy_all_first' %>
+      <%= label_tag 'destroy_all_first', 'Destroy ALL Guest records before the import.' %>
+    </p>
+  <%- end -%>
+  
+  <p><%= submit_tag 'Import' %></p>
 <%- end -%>
 
 <h3>For Example (though not everything has to be quoted):</h3>
