@@ -2,19 +2,23 @@
 
 <%- for guest in @guests -%>
 	<div class="admin-manage-guest-box">
+		<div class='admin-manage-guest-pin'>
+			<h4>PIN: <%= guest.pin %></h4>
+		</div>
 		<h3><%= link_to guest.full_name, admin_guest_path(guest) %></h3>
-    <ul class="address">
-      <%- if guest.address.present? -%>
-        <%= html_for_address(guest.address) %>
-      <%- else -%>
-        No Address Entered
-        (<%= link_to 'Enter One', new_admin_guest_address_path(guest) %>)
-      <%- end -%>
-    </ul>
-		<h4>PIN: <%= guest.pin %></h4>
+    	<ul class="address">
+	      <%- if guest.address.present? -%>
+	        <%= html_for_address(guest.address) %>
+	      <%- else -%>
+	        No Address Entered
+	        (<%= link_to 'Enter One', new_admin_guest_address_path(guest) %>)
+	      <%- end -%>
+	    </ul>
 	</div>
 <%- end -%>
 
-<%= link_to 'Add a Guest', new_admin_guest_path %> |
-<%= link_to 'Import Guests from CSV', import_admin_guests_path %> |
-<%= link_to 'My Page', guest_path %>
+<div id="admin-actions">
+	<%= link_to 'Add a Guest', new_admin_guest_path %> |
+	<%= link_to 'Import Guests from CSV', import_admin_guests_path %> |
+	<%= link_to 'My Page', guest_path %>
+</div>

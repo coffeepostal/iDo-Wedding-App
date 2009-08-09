@@ -38,19 +38,21 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 #header { height: 110px; background: url(/images/bg-header.png) no-repeat top center; }
 #content { margin: 0px 40px 10px 100px; padding-bottom: 20px; border-left: #222 solid 2px; border-bottom: #222 solid 2px; border-right: #222 solid 2px; }
 #main { padding: 20px; }
-#footer { padding: 50px; }
+#footer { padding: 20px 50px; }
 #logout { margin: 5px; padding: 5px; float: right; }
 #admin-nav { width: 1024px; background-color: #222; margin: 0; }
 .admin-manage-guest-box { padding: 0 5px 5px 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
+.admin-manage-guest-pin { float: right; background: #222; margin: 10px 5px 5px 5px; padding: 5px; }
+#admin-actions { margin: 10px; }
 
 
 /********************************/
 /*		Text Styles				*/
 /********************************/
-h1 { font-size: 36px; line-height: 36px;}
-h2 { font-size: 28px; line-height: 28px; }
-h3 { font-size: 14px; font-weight: bold; padding-top: 10px; }
-h4 { font-size: 14px; font-weight: normal; }
+h1 { font-size: 36px; line-height: 36px; margin-left: 10px; }
+h2 { font-size: 28px; line-height: 28px; margin-left: 10px; }
+h3 { font-size: 14px; font-weight: bold; padding-top: 10px; margin-left: 10px; }
+h4 { font-size: 28px; font-weight: bold; margin-left: 10px; color: #F2F5E6; }
 h5 {  }
 h6 { font-size: 8px; padding: 5px; text-transform: uppercase; text-align: right; }
 p { font-size: 14px; line-height: 18px; margin: 0 10px 10px 10px; }
@@ -87,7 +89,7 @@ li {  }
 /* Hide from IE5-Mac \*/
 	#admin-nav li a { float: none; }
 /* End hide */
-ul.address { list-style: none; padding: 0; margin: 0; }
+ul.address { list-style: none; padding: 0; margin: 0 0 0 10px; }
 ul.address li { font-size: 14px; }
 
 
@@ -103,7 +105,7 @@ p a {  }
 /*		Form Styles						*/
 /****************************************/
 form { margin-top: 1em; }
-fieldset { margin-bottom: 10px; }
+fieldset { margin: 0 20px 10px 20px; }
 .text_field_pin { font-size: 65px; color: #222; padding: 5px; }
 .text_field_verify { font-size: 65px; color: #222; padding: 5px; }
 

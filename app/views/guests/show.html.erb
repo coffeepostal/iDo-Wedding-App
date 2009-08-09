@@ -18,7 +18,10 @@
 
 		<%- if @admin_user -%>
 			<h3>Gift</h3>
-			<%= render guest.gift, :guest => guest %>
+			<%- if guest.gift -%>
+				<%= render guest.gift, :guest => guest %>
+			<%- else -%>
+			<%- end -%>
 		<%- end -%>
 
 		<h3>RSVP</h3>
