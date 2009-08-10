@@ -33,7 +33,18 @@ class Address < ActiveRecord::Base
   validates_format_of :zip, :with => /^\d{5}$/, :if => lambda{|a| a.country == 'Italy'}
   
   def lines
-    [[guest.try(:full_name), additional_names].compact.to_sentence(:two_words_connector => ' & '), line_1, line_2, "#{city}, #{state} #{zip}"]
+    [[guest.try(:full_name), additional_names].compact.to_sentence(:two_words_connector => ' & '), line_1, line_2] + [*city_line]
+  end
+  
+  def city_line
+    case country
+    when 'United States'
+      "#{city}, #{state} #{zip}"
+    when 'Canada'
+      ["#{city}, #{province} #{zip}", 'Canada']
+    when 'Italy'
+      ["#{city}, #{province} #{zip}", 'Italy']
+    end
   end
   
   def to_s
