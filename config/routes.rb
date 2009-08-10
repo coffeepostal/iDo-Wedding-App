@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
   map.with_options :controller => :sessions do |session|
-    session.login   'login',  :action => :new,    :conditions => {:method => :get}
-    session.login   'login',  :action => :create, :conditions => {:method => :post} 
+    session.login   'rsvp',   :action => :new,    :conditions => {:method => :get}
+    session.login   'rsvp',   :action => :create, :conditions => {:method => :post} 
     session.logout  'logout', :action => :destroy
     
     # make logging in our default route
-    session.root :action => :new
+    session.root :action => :redirect
   end
   
   map.resource :guest, :as => 'me', :only => [:show, :edit, :update]

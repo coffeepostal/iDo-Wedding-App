@@ -22,4 +22,8 @@ class SessionsController < ApplicationController
     session[:guest_id] = nil
     redirect_to login_path
   end
+  
+  def redirect
+    redirect_to login_path
+  end
 end
