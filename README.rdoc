@@ -2,7 +2,7 @@
 
 = TEMPORARY NOTE
 
-So, I, Adam, am getting married in the middle of September, so until then, this repo will be a little crazy. Feel free to download it and use it, but we'll be constantly adding and changing things, plus adding personal details that wouldn't apply to anyone else's wedding. Anyway, after the wedding Dallas and I will clean up the code and post a fully functional and customizable app.
+I am getting married in the middle of September, so until then this repo will be a little crazy. Feel free to download it and use it, but we'll be constantly adding and changing things, plus adding personal details and design that wouldn't (nor shouldn't) apply to anyone else's wedding. Anyway, after the wedding, Dallas and I will clean up the code and post a fully functional and customizable app.
 
 = Introduction
 
@@ -10,30 +10,18 @@ When I got engaged, my fiancée and I wanted an in-depth RSVP manager, along wit
 
 I'm currently still building *iDo*, but should be done relatively soon. Keep checking back here for updates, or I guess you can _watch_ the app here on *GitHub* and keep up-to-date that way.
 
-= Setup - First User Setup
+= Setup - Admin User Setup
 
-You'll need to manually add the admin guest from the console. Do so by running the following from the command line inside the app folder:
+To create an admin user (still a Guest record, though) all you need to do is run:
 
-  script/console
+	rake ido:admin
+	
+You will be prompted to type in the name of the admin user (must be at least first and last name):
 
-Once the console has launched, run this (replace "ADMIN NAME" with your name):
+	Enter the name of the admin user (e.g. John Smith):
+	John Smith
 
-  guest = Guest.new(:name => 'ADMIN NAME')
-  
-Then, since <tt>:admin</tt> is not mass-assignable, type:
-
-  guest.admin = true
-  guest.save
-
-And to get your newly generated PIN, type:
-
-  guest.pin
-
-To exit the console, type:
-
-  exit
-
-The result will be the PIN associated with your new (admin) guest record. Run script/server (if not using Passenger[http://www.modrails.com/]) and visit the app in your browser. The login name will be your last name ("NAME" in the above example), and the PIN will be the PIN generated when your guest record was created (the output of <tt>guest.pin</tt>). Using the admin guest you'll be able to create all the other guests by navigating to "/guests".
+It will give you the PIN associated with your new (admin) guest record and the last name to use for logging in. Run script/server (if not using Passenger[http://www.modrails.com/]) and visit the app in your browser. The login name will be your last name ("Smith" in the above example), and the PIN will be the PIN generated when your guest record was created. Using the admin guest you'll be able to create all the other guests by navigating to "/guests".
 
 Thanks,
 
