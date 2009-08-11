@@ -2,10 +2,10 @@
 
 <p>
 	<%= rsvp.label :attending, 'Will you be attending?' %><br />
-	<%= rsvp.select :attending, options_from_collection_for_select(Rsvp::ATTENDING_MAP, :first, :last, rsvp.object.attending), :include_blank => true %>
+	<%= rsvp.select :attending, options_from_collection_for_select(Rsvp::ATTENDING_MAP.map{|r| [r.first, r.last.humanize]}, :first, :last, rsvp.object.attending), :include_blank => true %>
 </p>
 
 <p>
-	<%= rsvp.label :number_attending, 'How many will be attending?' %><br />
-	<%= rsvp.select :number_attending, options_for_select([['', nil], [1, 1], [2, 2]], rsvp.object.number_attending) %>
+	<%= rsvp.label :number_attending, 'Will there be more attending with you?' %><br />
+	<%= rsvp.select :number_attending, grouped_options_for_select([['',[['No', 1]]], ['Yes', [['+1', 2]]]], rsvp.object.number_attending) %>
 </p>

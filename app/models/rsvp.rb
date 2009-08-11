@@ -6,6 +6,8 @@ class Rsvp < ActiveRecord::Base
   # don't allow some Hackety McHacker to raise (or lower) the number of people they can RSVP for
   attr_protected :max_number_attending
   
+  validates_presence_of :number_attending, :if => lambda{|rsvp| rsvp.attending?}
+  
   ATTENDING_MAP = { true => 'yes', false => 'no' }
   
   def attending_response

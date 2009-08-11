@@ -5,7 +5,7 @@ module RsvpsHelper
       (case rsvp.number_attending
       when 1: 'Yes, I will be attending by myself.'
       when 2: 'Yes, I will be attending with a date.'
-      else "Yes, all #{rsvp.number_attending.to_word} of us will be attending."
+      else "Yes, all #{rsvp.number_attending.try(:to_word)} of us will be attending."
       end),
       html_options
     )

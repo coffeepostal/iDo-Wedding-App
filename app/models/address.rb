@@ -32,8 +32,8 @@ class Address < ActiveRecord::Base
   validates_inclusion_of :province, :in => ItalianProvinces::MAP.values, :if => lambda{|a| a.country == 'Italy'}
   validates_format_of :zip, :with => /^\d{5}$/, :if => lambda{|a| a.country == 'Italy'}
   
-  def lines
-    [guest.try(:full_name), line_1, line_2] + [*city_line]
+  def lines(include_names = false)
+    [(guest.try(:full_name) if include_names), line_1, line_2] + [*city_line]
   end
   
   def city_line
