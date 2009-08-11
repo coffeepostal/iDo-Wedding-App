@@ -84,7 +84,7 @@ ul {  }
 li {  }
 #admin-nav ul { list-style: none; padding: 0; margin: 0; }
 #admin-nav li { float: left; margin: 0; }
-#admin-nav li a { background: #222; height: 2em; line-height: 2em; float: left; width: 200px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
+#admin-nav li a { background: #222; height: 2em; line-height: 2em; float: left; width: 256px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
 #admin-nav li a:hover { background: #F2F5E6; color: #222; }
 /* Hide from IE5-Mac \*/
 	#admin-nav li a { float: none; }
