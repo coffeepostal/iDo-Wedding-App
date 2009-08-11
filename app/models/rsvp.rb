@@ -9,10 +9,12 @@ class Rsvp < ActiveRecord::Base
   validates_presence_of :number_attending, :if => lambda{|rsvp| rsvp.attending?}
   validate :validate_number_attending_within_range
   
-  default_scope :include => :guest, :conditions => { :guests => { :admin => false } }
-  named_scope :yes, :conditions => { :attending => true }
-  named_scope :no,  :conditions => { :attending => false }
-  named_scope :undecided, :conditions => { :attending => nil }
+  with_options :include => :guest, :conditions => { :guests => { :admin => false } } do |scopes|
+    scopes.named_scope :non_admin
+    scopes.named_scope :yes, :conditions => { :attending => true }
+    scopes.named_scope :no,  :conditions => { :attending => false }
+    scopes.named_scope :undecided, :conditions => { :attending => nil }
+  end
   
   ATTENDING_MAP = [[true, 'yes'], [false, 'no']]
   
