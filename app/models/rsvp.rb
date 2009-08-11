@@ -8,10 +8,10 @@ class Rsvp < ActiveRecord::Base
   
   validates_presence_of :number_attending, :if => lambda{|rsvp| rsvp.attending?}
   
-  ATTENDING_MAP = { true => 'yes', false => 'no' }
+  ATTENDING_MAP = [[true, 'yes'], [false, 'no']]
   
   def attending_response
-    ATTENDING_MAP[self[:attending]] || self[:attending]
+    ATTENDING_MAP.assoc(self[:attending]).try(:last) || self[:attending]
   end
   
   def one?

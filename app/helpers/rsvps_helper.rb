@@ -1,4 +1,21 @@
 module RsvpsHelper
+  def number_attending_select_options(rsvp)
+    # Only 2 options if rsvp.max_number_attending == 2
+    return options_for_select([['No', 1], ['Yes', 2]], rsvp.number_attending) unless rsvp.max_number_attending > 2
+    
+    # Otherwise, we really have only 1 "No" option
+    options = options_for_select([['No', 1]], rsvp.number_attending)
+    
+    # But several "Yes" options
+    grouped_options = { 'Yes' => [] }
+    (2..rsvp.max_number_attending).to_a.each do |opt|
+      grouped_options['Yes'] << ["+#{opt - 1}", opt]
+    end
+    
+    # Return the combination of the singular "No" option and the grouped "Yes" options
+    options << grouped_options_for_select(grouped_options, rsvp.number_attending)    
+  end
+  
   def number_attending_content(rsvp, html_tag = :p, html_options = {})
     content_tag(
       html_tag,

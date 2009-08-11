@@ -6,6 +6,6 @@
 </p>
 
 <p>
-	<%= rsvp.label :number_attending, 'Will there be more attending with you?' %><br />
-	<%= rsvp.select :number_attending, grouped_options_for_select([['',[['No', 1]]], ['Yes', [['+1', 2]]]], rsvp.object.number_attending) %>
+	<%= rsvp.label :number_attending, rsvp.object.max_number_attending > 2 ? 'Will there be more attending with you?' : 'Will you be bringing a date?' %><br />
+	<%= rsvp.select :number_attending, number_attending_select_options(rsvp.object) %>
 </p>
