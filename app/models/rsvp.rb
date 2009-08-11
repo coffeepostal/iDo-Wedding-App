@@ -7,6 +7,7 @@ class Rsvp < ActiveRecord::Base
   attr_protected :max_number_attending
   
   validates_presence_of :number_attending, :if => lambda{|rsvp| rsvp.attending?}
+  validate :validate_number_attending_within_range
   
   ATTENDING_MAP = [[true, 'yes'], [false, 'no']]
   
@@ -24,5 +25,11 @@ class Rsvp < ActiveRecord::Base
   
   def max?
     number_attending == max_number_attending
+  end
+  
+  private
+  
+  def validate_number_attending_within_range
+    errors.add(:number_attending, "must be between 1 and #{max_number_attending}") unless number_attending.nil? || (1..max_number_attending).include?(number_attending)
   end
 end
