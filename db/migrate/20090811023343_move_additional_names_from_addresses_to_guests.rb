@@ -1,4 +1,4 @@
-class MoveAdditionalNamesFromAddressToGuest < ActiveRecord::Migration
+class MoveAdditionalNamesFromAddressesToGuests < ActiveRecord::Migration
   def self.up
     # add new column first
     add_column :guests, :additional_names, :string
