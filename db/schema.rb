@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090727173649) do
+ActiveRecord::Schema.define(:version => 20090811023343) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "guest_id"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20090727173649) do
     t.string   "zip"
     t.string   "country"
     t.string   "province"
-    t.string   "additional_names"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,9 +39,10 @@ ActiveRecord::Schema.define(:version => 20090727173649) do
     t.string   "suffix"
     t.string   "email"
     t.string   "pin"
-    t.boolean  "admin",      :default => false, :null => false
+    t.boolean  "admin",            :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "additional_names"
   end
 
   create_table "rsvps", :force => true do |t|
