@@ -17,10 +17,10 @@
 
 <p>
 	<%= address.label :state, 'State (abbreviation)' %><br />
-	<%= address.text_field :state, :size => 3 %>
+	<%= address.text_field :state, :size => 3, :maxlength => 2 %>
 </p>
 
 <p>
 	<%= address.label :zip, 'Zip Code' %><br />
-	<%= address.text_field :zip, :size => 5 %>
+	<%= address.text_field :zip, :size => 5, :maxlength => 5 %>
 </p>
