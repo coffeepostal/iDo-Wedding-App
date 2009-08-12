@@ -44,7 +44,12 @@ class Guest < ActiveRecord::Base
   end
 
   def name=(names)
-    self[:first_name], self[:last_name] = names.split(' ', 2)
+    first_name, last_name = names.split(' ', 2)
+    if last_name.blank?
+      self[:last_name] = first_name
+    else
+      self[:first_name], self[:last_name] = first_name, last_name
+    end
   end
   
   def full_name(guest_only = false)
