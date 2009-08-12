@@ -1,10 +1,12 @@
 class Guest < ActiveRecord::Base
-  nullify :salutation, :first_name, :suffix, :email
+  nullify :salutation, :first_name, :suffix, :additional_names, :email
   nullify :address, :gift, :rsvp
   
-  has_one :address
-  has_one :gift
-  has_one :rsvp
+  with_options :dependent => :destroy do |g|
+    g.has_one :address
+    g.has_one :gift
+    g.has_one :rsvp
+  end
   
   # accept attributes for our address, gift, and RSVP via one form
   accepts_nested_attributes_for :address, :gift, :rsvp
@@ -45,8 +47,10 @@ class Guest < ActiveRecord::Base
     self[:first_name], self[:last_name] = names.split(' ', 2)
   end
   
-  def full_name
-    [salutation, name, suffix].compact.join(' ').strip
+  def full_name(guest_only = false)
+    guest_full_name = [salutation, name, suffix].compact.join(' ').strip
+    return guest_full_name if guest_only
+    [guest_full_name, additional_names].compact.to_sentence(:two_words_connector => ' & ')
   end
   
   def safe_email

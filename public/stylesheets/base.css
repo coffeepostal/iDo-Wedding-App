@@ -36,7 +36,7 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 #flash { background: #F2F5E6; width: 944px; margin: 0 auto; padding: 10px 50px 10px 50px; color: #222; }
 #container { background: url(/images/bg-body.jpg) top center repeat-x #F2F5E6; width: 1024px; margin: 0 auto; text-align: left; }
 #header { height: 110px; background: url(/images/bg-header.png) no-repeat top center; }
-#content { margin: 0px 40px 10px 100px; padding-bottom: 20px; border-left: #222 solid 2px; border-bottom: #222 solid 2px; border-right: #222 solid 2px; }
+#content { margin: 0px 40px 10px 100px; border-left: #222 solid 2px; border-bottom: #222 solid 2px; border-right: #222 solid 2px; }
 #main { padding: 20px; }
 #footer { padding: 20px 50px; }
 #logout { margin: 5px; padding: 5px; float: right; }
@@ -44,6 +44,7 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 .admin-manage-guest-box { padding: 0 5px 5px 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
 .admin-manage-guest-pin { float: right; background: #222; margin: 10px 5px 5px 5px; padding: 5px; }
 #admin-actions { margin: 10px; }
+.group { margin: 10px 0px; }
 
 
 /********************************/
@@ -84,7 +85,7 @@ ul {  }
 li {  }
 #admin-nav ul { list-style: none; padding: 0; margin: 0; }
 #admin-nav li { float: left; margin: 0; }
-#admin-nav li a { background: #222; height: 2em; line-height: 2em; float: left; width: 200px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
+#admin-nav li a { background: #222; height: 2em; line-height: 2em; float: left; width: 256px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
 #admin-nav li a:hover { background: #F2F5E6; color: #222; }
 /* Hide from IE5-Mac \*/
 	#admin-nav li a { float: none; }
@@ -108,6 +109,9 @@ form { margin-top: 1em; }
 fieldset { margin: 0 20px 10px 20px; }
 .text_field_pin { font-size: 65px; color: #222; padding: 5px; }
 .text_field_verify { font-size: 65px; color: #222; padding: 5px; }
+.form_submit, .update_link { padding: 5px; background: #A12B2B; color: #F2F5E6; font-size: 36px; font-weight: bold; }
+.update_link { border: 2px outset #CCC; }
+.update_link:active { border: 2px inset #CCC; }
 
 
 /****************************************/

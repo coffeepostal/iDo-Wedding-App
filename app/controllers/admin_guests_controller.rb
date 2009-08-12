@@ -65,7 +65,7 @@ class AdminGuestsController < ApplicationController
       each_csv_row do |row_hash|        
         # Guest info
         guest_attributes = row_hash.select do |k,v|
-          [:salutation, :first_name, :last_name, :name, :suffix, :email].include?(k.to_sym)
+          [:salutation, :first_name, :last_name, :name, :suffix, :additional_names, :email].include?(k.to_sym)
         end.inject({}) do |memo, pair|
           memo[pair.first.to_sym] = pair.last
           memo
@@ -83,7 +83,7 @@ class AdminGuestsController < ApplicationController
       
         # Address info
         address_attributes = row_hash.select do |k,v|
-          [:line_1, :line_2, :city, :state, :zip, :country, :province, :additional_names].include?(k.to_sym)
+          [:line_1, :line_2, :city, :state, :zip, :country, :province].include?(k.to_sym)
         end.inject({}) do |memo, pair|
           memo[pair.first.to_sym] = pair.last
           memo
