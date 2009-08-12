@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if @guest = Guest.find_for_login(params[:guest][:last_name], params[:guest][:pin])
-      flash[:notice] = "Hey there #{@guest.first_name}!#{' Please check your address and RSVP!' unless @guest.admin?}"
+      flash[:notice] = "Hey there #{@guest.first_name || @guest.full_name}!#{' Please check your address and RSVP!' unless @guest.admin?}"
       session[:guest_id] = @guest.id
       redirect_to guest_path
     else

@@ -2,7 +2,7 @@
 
 <p id="logout"><%= link_to 'Nevermind, click here to take me back', @admin_user ? admin_guest_path(guest) : guest_path %></p>
 
-<h1>Update <%= @admin_user ? "#{guest.first_name}’s" : 'Your' %> Info</h1>
+<h1>Update <%= @admin_user ? "#{guest.first_name || guest.full_name}’s" : 'Your' %> Info</h1>
 
 <%- form_for guest, :url => @admin_user ? admin_guest_path(guest) : guest_path do |form| -%>
 	<%= render form %>

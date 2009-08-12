@@ -36,7 +36,7 @@
 		</div>
 		
 		<div class="group">
-			<%= link_to "Update #{@admin_user ? guest.first_name + '’s' : 'My'} Info", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path, :class => 'update_link' %>
+			<%= link_to "Update #{@admin_user ? (guest.first_name || guest.full_name) + '’s' : 'My'} Info", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path, :class => 'update_link' %>
 		</div>
 	<%- else -%>
 		<p>Hurray! You’re an admin user!</p>
