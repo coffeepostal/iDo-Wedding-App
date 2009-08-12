@@ -7,8 +7,13 @@
     	<%= form.select :salutation, options_from_collection_for_select(Guest::SALUTATIONS, :to_s, :to_s, form.object.salutation), :include_blank => true %>
     </p>
     <p class="column">
+		<%- if @admin_user -%>
+		<%= form.label :name %><br />
+		<%= form.text_field :first_name %><%= form.text_field :last_name %>
+		<%- else -%>
     	<%= form.label :name %><br />
-  	  <%= form.text_field :name %>
+		<%= form.text_field :name %>
+		<%- end -%>
   	</p>
   	<p class="column">
   	  <%= form.label :suffix %><br />
