@@ -4,7 +4,6 @@
 	<%= rsvp.label :attending, 'Will you be attending?' %><br />
 	<%= rsvp.select :attending, options_from_collection_for_select(Rsvp::ATTENDING_MAP.map{|r| [r.first, r.last.humanize]}, :first, :last, rsvp.object.attending), :include_blank => true %>
 </p>
-
 <p>
 	<%= rsvp.label :number_attending, rsvp.object.max_number_attending > 2 ? 'Will there be more attending with you?' : 'Will you be bringing a date?' %><br />
 	<%= rsvp.select :number_attending, number_attending_select_options(rsvp.object) %>
