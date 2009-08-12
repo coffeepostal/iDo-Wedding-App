@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  nullify :salutation, :suffix, :email
+  nullify :salutation, :first_name, :suffix, :email
   nullify :address, :gift, :rsvp
   
   has_one :address
@@ -14,7 +14,7 @@ class Guest < ActiveRecord::Base
   attr_protected :admin
   
   # Validating the guest form fields aren't empty.
-  validates_presence_of :name
+  validates_presence_of :last_name
   # validates_presence_of :email, :unless => lambda {|guest| guest.admin?}
   validates_associated :address, :rsvp
   
