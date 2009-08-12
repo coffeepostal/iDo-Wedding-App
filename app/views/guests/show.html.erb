@@ -10,24 +10,34 @@
 	<%- end -%>
 
 	<%- unless guest_is_admin -%>
-  	<h3>Mailing Address:</h3>
-    <%= render guest.address, :guest => guest %>
-	
-		<h3>Email Address:</h3>
-		<%= guest_email_address_content(guest) %>
-
+		<div class="group">
+	  		<h3>Mailing Address:</h3>
+	    <%= render guest.address, :guest => guest %>
+		</div>
+		
+		<div class="group">
+			<h3>Email Address:</h3>
+			<%= guest_email_address_content(guest) %>
+		</div>
+		
 		<%- if @admin_user -%>
-			<h3>Gift</h3>
-			<%- if guest.gift -%>
-				<%= render guest.gift, :guest => guest %>
-			<%- else -%>
-			<%- end -%>
+			<div class="group">
+				<h3>Gift</h3>
+				<%- if guest.gift -%>
+					<%= render guest.gift, :guest => guest %>
+				<%- else -%>
+				<%- end -%>
+			</div>
 		<%- end -%>
-
-		<h3>RSVP</h3>
-		<%= render guest.rsvp, :guest => guest %>
-
-		<%= link_to "Update #{@admin_user ? guest.first_name + '’s' : 'My'} Info", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path %>
+		
+		<div class="group">
+			<h3>RSVP</h3>
+			<%= render guest.rsvp, :guest => guest %>
+		</div>
+		
+		<div class="group">
+			<%= link_to "Update #{@admin_user ? guest.first_name + '’s' : 'My'} Info", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path, :class => 'update_link' %>
+		</div>
 	<%- else -%>
 		<p>Hurray! You’re an admin user!</p>
 	<%- end -%>
