@@ -13,60 +13,24 @@
 		<p class="column"><a href="http://www.williams-sonoma.com/registry/findregistry.cfm" target="_blank"><%= image_tag("img-registry-logo-WilliamsSonoma.png") %></a></p>
 		<p class="column"><a href="http://giftreg.surlatable.com/slt/grws" target="_blank"><%= image_tag("img-registry-logo-SurLaTable.png") %></a></p>
 		<p class="column"><a href="http://www.bedbathandbeyond.com/regGiftRegistry.asp?order_num=-1&wrn=%2D549261437&" target="_blank"><%= image_tag("img-registry-logo-BedBath&Beyond.png") %></a></p>
+		
 		<div class="clear"></div>
 	</div>
+	
 	<div class="group">
 		<h3>Hotels Around Bellingham</h3>
 		<p>Here is a list of local hotels, close to where our wedding will be held.</p>
-		<ul class="column">
-			<li class="address, bold">Fairhaven Village Inn</li>
-			<li class="address">1200 10th St</li>
-			<li class="address">Bellingham, WA 98225</li>
-			<li class="address">360.733.1311</li>
-			<li class="address"><%= link_to "Website", "http://www.fairhavenvillageinn.com/", :target => "_blank" %></li>
-		</ul>
-		<ul class="column">
-			<li class="address, bold">Chrysalis Inn and Spa</li>
-			<li class="address">804 10th St</li>
-			<li class="address">Bellingham, WA 98225</li>
-			<li class="address">360.756.1005</li>
-			<li class="address"><%= link_to "Website", "http://www.thechrysalisinn.com/", :target => "_blank" %></li>
-		</ul>
-		<ul class="column">
-			<li class="address, bold">Days Inn</li>
-			<li class="address">215 Samish Way</li>
-			<li class="address">Bellingham, WA 98225</li>
-			<li class="address">360.734.8830</li>
-			<li class="address"><%= link_to "Website", "http://www.daysinn.com/DaysInn/control/Booking/property_info?propertyId=00996&as_srp=SP2&cid=carat_search-Days_Inn", :target => "_blank" %></li>
-		</ul>
-		<ul class="column">
-			<li class="address, bold">Best Western Lakeway Inn</li>
-			<li class="address">714 Lakeway Drive</li>
-			<li class="address">Bellingham, WA 98229</li>
-			<li class="address">360.671.1011</li>
-			<li class="address"><%= link_to "Website", "http://www.thelakewayinn.com", :target => "_blank" %></li>
-		</ul>
-		<ul class="column">
-			<li class="address, bold">Best Western Heritage Inn</li>
-			<li class="address">151 E McLeod Rd</li>
-			<li class="address">Bellingham, WA 98226</li>
-			<li class="address">360.647.1912</li>
-			<li class="address"><%= link_to "Website", "http://www.bestwesternwashington.com/hotels/best-western-heritage-inn/", :target => "_blank" %></li>
-		</ul>
-		<ul class="column">
-			<li class="address, bold">Coachman Inn</li>
-			<li class="address">120 N Samish Way</li>
-			<li class="address">Bellingham, WA 98225</li>
-			<li class="address">360.671.9000</li>
-			<li class="address"><%= link_to "Website", "http://www.coachmaninnmotel.com", :target => "_blank" %></li>
-		</ul>
-		<ul class="column">
-			<li class="address, bold">Motel 6</li>
-			<li class="address">3701 Byron Avenue</li>
-			<li class="address">Bellingham, WA 98225</li>
-			<li class="address">360.671.4494</li>
-			<li class="address"><%= link_to "Website", "http://www.motel6.com/reservations/motel_detail.aspx?num=0044", :target => "_blank" %></li>
-		</ul>
+		
+    <%- Lodging.all.each do |lodging| -%>
+      <ul class="column address">
+        <li class="bold"><%= lodging.name %></li>
+        <li><%= lodging.street %></li>
+        <li><%= lodging.city %>, <%= lodging.state %> <%= lodging.zip %></li>
+        <li><%= number_to_phone(lodging.phone, :area_code => true) %></li>
+        <li><%= link_to 'Website', lodging.url, :target => '_blank' %></li>
+      </ul>
+    <%- end -%>
+    
 		<div class="clear"></div>
 	</div>
 	<%- else -%>
