@@ -34,7 +34,15 @@
 		<div class="clear"></div>
 	</div>
 	<%- else -%>
-		<p>No, I’m sorry, <%= guest.rsvp.one? ? 'I' : 'we' %> won’t be able to attend.</p>
+		<p>We're sorry we won't be able to see <%= guest.rsvp.one? ? 'you' : 'you guys' %>, you will be missed.</p>
+		
+		<h3>Wedding Registry</h3>
+		<p>If you would like to send a gift to us anyway, we are registered at the following locations. Click on the store's logo to see our registry list:</p>
+		<p class="column"><a href="http://registry.weddingchannel.com/gvr/guestregistrydetail.action?retailer_registry_uid=310485632&listby=dept" target="_blank"><%= image_tag("img-registry-logo-macys.png") %></a></p>
+		<p class="column"><a href="http://www.crateandbarrel.com/Gift-Registry/Guest/ViewRegistry.aspx?grid=4291770" target="_blank"><%= image_tag("img-registry-logo-Crate&Barrel.png") %></a></p>
+		<p class="column"><a href="http://www.williams-sonoma.com/registry/findregistry.cfm" target="_blank"><%= image_tag("img-registry-logo-WilliamsSonoma.png") %></a></p>
+		<p class="column"><a href="http://giftreg.surlatable.com/slt/grws" target="_blank"><%= image_tag("img-registry-logo-SurLaTable.png") %></a></p>
+		<p class="column"><a href="http://www.bedbathandbeyond.com/regGiftRegistry.asp?order_num=-1&wrn=%2D549261437&" target="_blank"><%= image_tag("img-registry-logo-BedBath&Beyond.png") %></a></p>
 	<%- end -%>
 
 	<%- if @admin_user -%>
