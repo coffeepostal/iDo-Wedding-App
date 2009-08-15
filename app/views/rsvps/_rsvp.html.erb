@@ -1,41 +1,54 @@
 <%- if guest.is_attending? -%>
+
   <%= number_attending_content(rsvp) %>
-<div class="group">
-	<h3>Wedding Time and Location</h3>
-	<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
-  <%= wedding_location_map_content %>
+  <div class="group">
+  	<h3>Wedding Time and Location</h3>
+  	<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
+    <%= wedding_location_map_content %>
   
-	<h3>Wedding Registry</h3>
-	<p>We are registered at the following locations, click on the store's logo to see our registry list:</p>
-	<p class="column"><a href="http://registry.weddingchannel.com/gvr/guestregistrydetail.action?retailer_registry_uid=310485632&listby=dept" target="_blank"><%= image_tag("img-registry-logo-macys.png") %></a></p>
-	<p class="column"><a href="http://www.crateandbarrel.com/Gift-Registry/Guest/ViewRegistry.aspx?grid=4291770" target="_blank"><%= image_tag("img-registry-logo-Crate&Barrel.png") %></a></p>
-	<p class="column"><a href="http://www.williams-sonoma.com/registry/findregistry.cfm" target="_blank"><%= image_tag("img-registry-logo-WilliamsSonoma.png") %></a></p>
-	<p class="column"><a href="http://giftreg.surlatable.com/slt/grws" target="_blank"><%= image_tag("img-registry-logo-SurLaTable.png") %></a></p>
-	<p class="column"><a href="http://www.bedbathandbeyond.com/regGiftRegistry.asp?order_num=-1&wrn=%2D549261437&" target="_blank"><%= image_tag("img-registry-logo-BedBath&Beyond.png") %></a></p>
-	
-	<div class="clear"></div>
-</div>
+  	<h3>Wedding Registry</h3>
+  	<p>We are registered at the following locations, click on the store's logo to see our registry list:</p>
+    
+    <%- @gift_registry_links = capture do -%>
+      <%- GiftRegistry.all.each do |registry| -%>
+        <p class="column">
+          <%= link_to(image_tag(registry.image_path), registry.url,
+            :title => registry.name, :alt => registry.slug, :target => '_blank') %>
+        </p>
+      <%- end -%>
+    <%- end -%>
+    
+    <%= @gift_registry_links %>
 
-<div class="group">
-	<h3>Hotels Around Bellingham</h3>
-	<p>Here is a list of local hotels, close to where our wedding will be held.</p>
+  	<div class="clear"></div>
+  </div>
+
+	<div class="group">
+		<h3>Hotels Around Bellingham</h3>
+		<p>Here is a list of local hotels, close to where our wedding will be held.</p>
+		
+    <%- Lodging.all.each do |lodging| -%>
+      <ul class="column address">
+        <li class="bold"><%= lodging.name %></li>
+        <li><%= lodging.street %></li>
+        <li><%= lodging.city %>, <%= lodging.state %> <%= lodging.zip %></li>
+        <li><%= number_to_phone(lodging.phone, :area_code => true) %></li>
+        <li><%= link_to 'Website', lodging.url, :target => '_blank' %></li>
+      </ul>
+    <%- end -%>
+    
+		<div class="clear"></div>
+	</div>
 	
-  <%- Lodging.all.each do |lodging| -%>
-    <ul class="column address">
-      <li class="bold"><%= lodging.name %></li>
-      <li><%= lodging.street %></li>
-      <li><%= lodging.city %>, <%= lodging.state %> <%= lodging.zip %></li>
-      <li><%= number_to_phone(lodging.phone, :area_code => true) %></li>
-      <li><%= link_to 'Website', lodging.url, :target => '_blank' %></li>
-    </ul>
-  <%- end -%>
-  
-	<div class="clear"></div>
-</div>
 <%- else -%>
-	<p>No, I’m sorry, <%= guest.rsvp.one? ? 'I' : 'we' %> won’t be able to attend.</p>
+
+	<p>We're sorry we won't be able to see <%= guest.rsvp.one? ? 'you' : 'you guys' %>, you will be missed.</p>
+	
+	<h3>Wedding Registry</h3>
+	<p>If you would like to send a gift to us anyway, we are registered at the following locations. Click on the store's logo to see our registry list:</p>
+  
+  <%= @gift_registry_links %>
+	
 <%- end -%>
 
-<%- if @admin_user -%>
-	<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>
-<%- end -%>
+<%= content_tag :p, "This guest was#{' NOT' unless guest.rsvp.admin_rsvp?} RSVP'd by an Admin." :class => 'fancy' if @admin_user %>
