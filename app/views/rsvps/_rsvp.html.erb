@@ -9,16 +9,7 @@
   	<h3>Wedding Registry</h3>
   	<p>We are registered at the following locations, click on the store's logo to see our registry list:</p>
     
-    <%- @gift_registry_links = capture do -%>
-      <%- GiftRegistry.all.each do |registry| -%>
-        <p class="column">
-          <%= link_to(image_tag(registry.image_path), registry.url,
-            :title => registry.name, :alt => registry.slug, :target => '_blank') %>
-        </p>
-      <%- end -%>
-    <%- end -%>
-    
-    <%= @gift_registry_links %>
+    <%= gift_registry_links %>
 
   	<div class="clear"></div>
   </div>
@@ -44,10 +35,14 @@
 
 	<p>We're sorry we won't be able to see <%= guest.rsvp.one? ? 'you' : 'you guys' %>, you will be missed.</p>
 	
-	<h3>Wedding Registry</h3>
-	<p>If you would like to send a gift to us anyway, we are registered at the following locations. Click on the store's logo to see our registry list:</p>
+	<div class="group">
+  	<h3>Wedding Registry</h3>
+  	<p>If you would like to send a gift to us anyway, we are registered at the following locations. Click on the store's logo to see our registry list:</p>
   
-  <%= @gift_registry_links %>
+    <%= gift_registry_links %>
+  
+    <div class="clear"></div>
+  </div>
 	
 <%- end -%>
 

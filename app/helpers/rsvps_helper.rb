@@ -45,4 +45,17 @@ module RsvpsHelper
       html << content_tag(:div, '', :class => 'clear')
     end
   end
+  
+  def gift_registry_links
+    @gift_registry_links ||= (
+      GiftRegistry.all.map do |registry|
+        content_tag(:p,
+          link_to(image_tag(registry.image_path), registry.url,
+            :title => registry.name, :alt => registry.slug, :target => '_blank'),
+          :class => 'column'
+        )
+      end.join
+    )
+  end
+  
 end
