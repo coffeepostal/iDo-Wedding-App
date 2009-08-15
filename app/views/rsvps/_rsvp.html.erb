@@ -51,4 +51,4 @@
 	
 <%- end -%>
 
-<%= content_tag :p, "This guest was#{' NOT' unless guest.rsvp.admin_rsvp?} RSVP'd by an Admin." :class => 'fancy' if @admin_user %>
+<%= content_tag :p, "This guest was#{' NOT' unless guest.rsvp.admin_rsvp?} RSVP'd by an Admin.", :class => 'fancy' if @admin_user %>
