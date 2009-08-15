@@ -1,49 +1,41 @@
-<%- if guest.has_rsvped? -%>
-	<%- if guest.is_attending? -%>
-    <%= number_attending_content(rsvp) %>
-	<div class="group">
-		<h3>Wedding Time and Location</h3>
-		<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
-    <%= wedding_location_map_content %>
-    
-		<h3>Wedding Registry</h3>
-		<p>We are registered at the following locations, click on the store's logo to see our registry list:</p>
-		<p class="column"><a href="http://registry.weddingchannel.com/gvr/guestregistrydetail.action?retailer_registry_uid=310485632&listby=dept" target="_blank"><%= image_tag("img-registry-logo-macys.png") %></a></p>
-		<p class="column"><a href="http://www.crateandbarrel.com/Gift-Registry/Guest/ViewRegistry.aspx?grid=4291770" target="_blank"><%= image_tag("img-registry-logo-Crate&Barrel.png") %></a></p>
-		<p class="column"><a href="http://www.williams-sonoma.com/registry/findregistry.cfm" target="_blank"><%= image_tag("img-registry-logo-WilliamsSonoma.png") %></a></p>
-		<p class="column"><a href="http://giftreg.surlatable.com/slt/grws" target="_blank"><%= image_tag("img-registry-logo-SurLaTable.png") %></a></p>
-		<p class="column"><a href="http://www.bedbathandbeyond.com/regGiftRegistry.asp?order_num=-1&wrn=%2D549261437&" target="_blank"><%= image_tag("img-registry-logo-BedBath&Beyond.png") %></a></p>
-		
-		<div class="clear"></div>
-	</div>
+<%- if guest.is_attending? -%>
+  <%= number_attending_content(rsvp) %>
+<div class="group">
+	<h3>Wedding Time and Location</h3>
+	<p>As promised, the wedding will be at 4:30 PM on September 12th, 2009 at:</p>
+  <%= wedding_location_map_content %>
+  
+	<h3>Wedding Registry</h3>
+	<p>We are registered at the following locations, click on the store's logo to see our registry list:</p>
+	<p class="column"><a href="http://registry.weddingchannel.com/gvr/guestregistrydetail.action?retailer_registry_uid=310485632&listby=dept" target="_blank"><%= image_tag("img-registry-logo-macys.png") %></a></p>
+	<p class="column"><a href="http://www.crateandbarrel.com/Gift-Registry/Guest/ViewRegistry.aspx?grid=4291770" target="_blank"><%= image_tag("img-registry-logo-Crate&Barrel.png") %></a></p>
+	<p class="column"><a href="http://www.williams-sonoma.com/registry/findregistry.cfm" target="_blank"><%= image_tag("img-registry-logo-WilliamsSonoma.png") %></a></p>
+	<p class="column"><a href="http://giftreg.surlatable.com/slt/grws" target="_blank"><%= image_tag("img-registry-logo-SurLaTable.png") %></a></p>
+	<p class="column"><a href="http://www.bedbathandbeyond.com/regGiftRegistry.asp?order_num=-1&wrn=%2D549261437&" target="_blank"><%= image_tag("img-registry-logo-BedBath&Beyond.png") %></a></p>
 	
-	<div class="group">
-		<h3>Hotels Around Bellingham</h3>
-		<p>Here is a list of local hotels, close to where our wedding will be held.</p>
-		
-    <%- Lodging.all.each do |lodging| -%>
-      <ul class="column address">
-        <li class="bold"><%= lodging.name %></li>
-        <li><%= lodging.street %></li>
-        <li><%= lodging.city %>, <%= lodging.state %> <%= lodging.zip %></li>
-        <li><%= number_to_phone(lodging.phone, :area_code => true) %></li>
-        <li><%= link_to 'Website', lodging.url, :target => '_blank' %></li>
-      </ul>
-    <%- end -%>
-    
-		<div class="clear"></div>
-	</div>
-	<%- else -%>
-		<p>No, I’m sorry, <%= guest.rsvp.one? ? 'I' : 'we' %> won’t be able to attend.</p>
-	<%- end -%>
+	<div class="clear"></div>
+</div>
 
-	<%- if @admin_user -%>
-		<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>
-	<%- end -%>
+<div class="group">
+	<h3>Hotels Around Bellingham</h3>
+	<p>Here is a list of local hotels, close to where our wedding will be held.</p>
 	
+  <%- Lodging.all.each do |lodging| -%>
+    <ul class="column address">
+      <li class="bold"><%= lodging.name %></li>
+      <li><%= lodging.street %></li>
+      <li><%= lodging.city %>, <%= lodging.state %> <%= lodging.zip %></li>
+      <li><%= number_to_phone(lodging.phone, :area_code => true) %></li>
+      <li><%= link_to 'Website', lodging.url, :target => '_blank' %></li>
+    </ul>
+  <%- end -%>
+  
+	<div class="clear"></div>
+</div>
 <%- else -%>
-	<p>
-	  <%= @admin_user ? "#{guest.name} has" : 'You have' %> not yet RSVP’d!<br />
-	  <%= link_to "RSVP#{' for them' if @admin_user}!", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path %>
-	</p>
+	<p>No, I’m sorry, <%= guest.rsvp.one? ? 'I' : 'we' %> won’t be able to attend.</p>
+<%- end -%>
+
+<%- if @admin_user -%>
+	<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>
 <%- end -%>

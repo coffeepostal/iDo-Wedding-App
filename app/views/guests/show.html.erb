@@ -11,8 +11,15 @@
 
 	<%- unless guest_is_admin -%>
 		<div class="group">
-	  		<h3>Mailing Address:</h3>
-	    <%= render guest.address, :guest => guest %>
+	  	<h3>Mailing Address:</h3>
+	  	<%- if guest.has_address? -%>
+  	    <%= render guest.address, :guest => guest %>
+  	  <%- else -%>
+  	    <p>
+      	  No address entered, please add one:
+      	  <%= link_to 'Enter Address.', @admin_user ? edit_admin_guest_path(guest) : edit_guest_path(:anchor => 'address') %>
+      	</p>
+      <%- end -%>
 		</div>
 		
 		<div class="group">
@@ -32,7 +39,14 @@
 		
 		<div class="group">
 			<h3>RSVP</h3>
-			<%= render guest.rsvp, :guest => guest %>
+			<%- if guest.has_rsvped? -%>
+  			<%= render guest.rsvp, :guest => guest %>
+      <%- else -%>
+      	<p>
+      	  <%= @admin_user ? "#{guest.name} has" : 'You have' %> not yet RSVP’d!<br />
+      	  <%= link_to "RSVP#{' for them' if @admin_user}!", @admin_user ? edit_admin_guest_path(guest) : edit_guest_path %>
+      	</p>
+      <%- end -%>
 		</div>
 		
 		<div class="group">

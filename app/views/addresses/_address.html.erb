@@ -1,8 +1,1 @@
-<%- if guest.has_address? -%>
-	<ul class="address"><%= html_for_address(guest.address) %></ul>
-<%- else -%>
-	<p>
-	  No address entered, please add one:
-	  <%= link_to 'Enter Address.', @admin_user ? edit_admin_guest_path(guest) : edit_guest_path(:anchor => 'address') %>
-	</p>
-<%- end -%>
+<ul class="address"><%= html_for_address(guest.address) %></ul>
