@@ -13,24 +13,24 @@
 
 <h3>Attending</h3>
 <%- for guest in coming -%>
-	<div class="admin-manage-rsvp-box rsvp-attending">
+	<div class="admin-manage-rsvp-box rsvp-attending<%- if guest.rsvp.admin_rsvp? -%> registered-by-admin<%- end -%>">
 		<h3><%= guest.full_name %> <span style="font-size: 10px;">[<%= link_to('Update', edit_admin_guest_rsvp_path(guest)) %>]</span></h3>
     <%= number_attending_content(guest.rsvp) %>
 
   	<%- if @admin_user -%>
-  		<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>
+  		<!--<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>-->
   	<%- end -%>
 	</div>
 <%- end -%>
 
 <h3>Not Attending</h3>
 <%- for guest in not_coming -%>
-	<div class="admin-manage-rsvp-box rsvp-not-attending">
+	<div class="admin-manage-rsvp-box rsvp-not-attending<%- if guest.rsvp.admin_rsvp? -%> registered-by-admin<%- end -%>">
 		<h3><%= guest.full_name %> <span style="font-size: 10px;">[<%= link_to('Update', edit_admin_guest_rsvp_path(guest)) %>]</span></h3>
 		<p>No, I’m sorry, <%= guest.rsvp.one? ? 'I' : 'we' %> won’t be able to attend.</p>
 
   	<%- if @admin_user -%>
-  		<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>
+  		<!--<p class="fancy">This guest was<%= ' NOT' unless guest.rsvp.admin_rsvp? %> registered by an Admin.</p>-->
   	<%- end -%>
 	</div>
 <%- end -%>

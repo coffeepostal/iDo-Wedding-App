@@ -45,6 +45,7 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 .admin-manage-guest-pin { float: right; background: #222; margin: 10px 5px 5px 5px; padding: 5px; }
 #admin-actions { margin: 10px; }
 .group { margin: 10px 0px; }
+.registered-by-admin { background: url(/images/bg-created-by-admin.png) top right no-repeat; }
 
 
 /********************************/
@@ -62,12 +63,14 @@ quote { background: #DBDED0; font-size: 14px; line-height: 18px; font-style: ita
 
 
 /********************************/
-/*		Generic Text Styles		*/
+/*		Generic Styles			*/
 /********************************/
 .bold { font-weight: bold; }
 .fancy { font-family: Georgia, "Times New Roman", Times, serif; font-style: italic; font-weight: normal; }
 .small { font-size: 14px; }
 .emphasis { font-style: italic; background: #DBDED0; padding: 2px; }
+.float_left { float: left; padding: 5px; }
+.float_right { float: right; padding: 5px; }
 
 
 /********************************/
@@ -147,3 +150,4 @@ img { margin: 0px; border: none; }
 .no-rsvp { background-color: #ECEB99; }
 .rsvp-attending { background-color: #C7EC99; }
 .rsvp-not-attending { background-color: #EC9B99; }
+.admin-manage-rsvp-box { padding: 2px; }
