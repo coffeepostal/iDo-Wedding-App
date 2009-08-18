@@ -41,9 +41,9 @@ body { background-color: #222; text-align: center; margin: 0px auto; font-family
 #footer { padding: 20px 50px; }
 #logout { margin: 5px; padding: 5px; float: right; }
 #admin-nav { width: 1024px; background-color: #222; margin: 0; }
-.admin-manage-guest-box { padding: 0 5px 5px 5px; margin: 0px 5px 10px 5px; border: #222 solid 1px; }
+.admin-manage-guest-box { padding: 0 5px 5px 5px; margin: 0px 5px 5px 5px; border: #222 solid 1px; }
 .admin-manage-guest-pin { float: right; background: #222; margin: 10px 5px 5px 5px; padding: 5px; }
-#admin-actions { margin: 10px; }
+#admin-actions { background: #222; margin: 10px 0; }
 .group { margin: 10px 0px; }
 .registered-by-admin { background: url(/images/bg-created-by-admin.png) top right no-repeat; }
 
@@ -86,12 +86,12 @@ quote { background: #DBDED0; font-size: 14px; line-height: 18px; font-style: ita
 /********************************/
 ul {  }
 li {  }
-#admin-nav ul { list-style: none; padding: 0; margin: 0; }
-#admin-nav li { float: left; margin: 0; }
-#admin-nav li a { background: #222; height: 2em; line-height: 2em; float: left; width: 256px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
-#admin-nav li a:hover { background: #F2F5E6; color: #222; }
+#admin-nav ul, #admin-actions ul { list-style: none; padding: 0; margin: 0; }
+#admin-nav li, #admin-actions li { float: left; margin: 0; }
+#admin-nav li a, #admin-actions li a { background: #222; height: 2em; line-height: 2em; float: left; width: 256px; display: block; color: #F2F5E6; text-decoration: none; text-align: center; }
+#admin-nav li a:hover, #admin-actions li a:hover { background: #F2F5E6; color: #222; }
 /* Hide from IE5-Mac \*/
-	#admin-nav li a { float: none; }
+	#admin-nav li a, #admin-actions li a { float: none; }
 /* End hide */
 ul.address { list-style: none; padding: 0; margin: 0 0 0 10px; }
 ul.address li { font-size: 14px; }
