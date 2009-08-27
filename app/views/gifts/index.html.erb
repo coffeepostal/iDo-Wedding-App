@@ -4,7 +4,7 @@
 <%- for guest in @guests -%>
 	<%- if guest.gift.present? -%>
 		<div class="admin-manage-rsvp-box rsvp-attending<%- if guest.admin? -%> hidden<%- end -%>">
-			<h3><%= link_to guest.full_name, admin_guest_path(guest) %>: <%= guest.gift %></h3>
+			<h3><%= link_to guest.full_name, admin_guest_path(guest) %>: <%= render guest.gift, :guest => guest %></h3>
 		</div>
 	<%- end -%>
 <%- end -%>
