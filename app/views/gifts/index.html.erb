@@ -1,1 +1,20 @@
 <h2>Manage Gifts</h2>
+
+<h3>Have Given Gifts</h3>
+<%- for guest in @guests -%>
+	<%- if guest.gift.present? -%>
+		<div class="admin-manage-rsvp-box rsvp-attending<%- if guest.admin? -%> hidden<%- end -%>">
+			<h3><%= link_to guest.full_name, admin_guest_path(guest) %>: <%= guest.gift %></h3>
+		</div>
+	<%- end -%>
+<%- end -%>
+
+<h3>Have NOT Given Gifts</h3>
+<%- for guest in @guests -%>
+	<%- if guest.gift.present? -%>
+	<%- else -%>
+		<div class="admin-manage-rsvp-box rsvp-not-attending<%- if guest.admin? -%> hidden<%- end -%>">
+			<h3><%= link_to guest.full_name, admin_guest_path(guest) %></h3>
+		</div>
+	<%- end -%>
+<%- end -%>

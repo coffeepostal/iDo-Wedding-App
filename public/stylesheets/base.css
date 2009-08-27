@@ -142,6 +142,7 @@ img { margin: 0px; border: none; }
 /********************************/
 .clear { clear: both; }
 .column { float: left; margin-right: 1em; }
+.hidden { display: none; }
 
 
 /*************************
