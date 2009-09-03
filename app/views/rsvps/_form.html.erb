@@ -1,5 +1,3 @@
-<%= rsvp.hidden_field :admin_rsvp, :value => !!@admin_user ? 't' : 'f' %>
-
 <p>
 	<%= rsvp.label :attending, 'Will you be attending?' %><br />
 	<%= rsvp.select :attending, options_from_collection_for_select(Rsvp::ATTENDING_MAP.map{|r| [r.first, r.last.humanize]}, :first, :last, rsvp.object.attending), :include_blank => true %>
