@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title><%= controller.controller_name %>: <%= controller.action_name %></title>
+	<%= stylesheet_link_tag 'base' %>
+	<%#= stylesheet_link_tag 'print', :media => "print" %>
+</head>
+
+<body>
+	<%= content_tag(:div, flash[:notice], :id => 'flash') if flash[:notice] %>
+	
+	<div id="container">
+	  
+		<div id="header">
+			<%- if @session_guest and !@admin_user -%>
+				<div id="logout"><h3><%= link_to 'Logout', logout_path %></h3></div>
+			<%- end -%>
+		</div>
+		
+		<%- if @admin_user -%>
+  		<div id="admin-nav">
+  			<ul>
+  				<li><%= link_to "Manage Guests (#{Guest.non_admin.count})", admin_guests_path %></li>
+  				<li><%= link_to "Manage RSVPs (Y:#{Rsvp.yes.count}, N:#{Rsvp.no.count}, ?:#{Rsvp.undecided.count})", rsvps_path %></li>
+  				<li><%= link_to "Manage Gifts (#{Gift.count})", gifts_path %></li>
+          <!-- <li><%#= link_to 'Manage Thank Yous', thank_yous_path %></li> -->
+  				<li><%= link_to 'Logout', logout_path %></li>
+  			</ul>
+  			<div class="clear"></div>
+  		</div>
+		<%- end -%>
+		
+		<div id="content">
+			<%= yield %>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="footer"><%= image_tag('img-footer-cornerStamp.png') %></div>
+	</div>
+</body>
+
+</html>

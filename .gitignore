@@ -1,4 +1,5 @@
-log/*.log
+.bundle
 db/*.sqlite3
-tmp/*
-!.gitignore
+log/*.log
+tmp/
+.sass-cache/
