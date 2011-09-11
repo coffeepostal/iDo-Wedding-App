@@ -1,4 +1,16 @@
 IDoWeddingApp::Application.routes.draw do
+  get "addresses/index"
+
+  get "addresses/new"
+
+  get "addresses/create"
+
+  get "addresses/edit"
+
+  get "addresses/update"
+
+  get "addresses/destroy"
+
   get "guests/show"
 
   get "guests/edit"
