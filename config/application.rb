@@ -33,8 +33,24 @@ module IDoWeddingApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # Change the default options for generating various types of files.
+    config.generators do |g|
+      # generate HAML views instead of erb
+      g.template_engine     :haml
+      # don’t automatically create a helper for every controller
+      g.helper              false
+      # don’t automatically create assets for every controller
+      g.assets              false
+      # generate RSpec tests instead of Test::Unit
+      g.test_framework      :rspec
+      # don’t automatically create specs for views
+      g.view_specs          false
+      # use FactoryGirl for generating fixtures
+      g.fixture_replacement :factory_girl
+    end
+
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = 'utf-8'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
