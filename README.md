@@ -2,7 +2,7 @@
 
 ## Introduction
 
-When I got engaged, my fiancée and I wanted an in-depth RSVP manager, along with the ability to easily tie people to the gifts they purchased us. I searched *GitHub* for a wedding app, and found a few, but most were glorified blogs, and so I created iDo.
+When I got engaged, my fiancée and I wanted an in-depth RSVP manager, along with the ability to easily tie people to the gifts they purchased us. I searched **GitHub** for a wedding app, and found a few, but most were glorified blogs, and so I created iDo.
 
 **iDo** is still in development and is mostly targeted and my original, personal need. It is slowly getting developed further and made into a universally useful application. Keep checking back here for updates, or I guess you can *watch* the app here on **GitHub** and keep up to date that way.
 
