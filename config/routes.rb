@@ -1,27 +1,9 @@
 IDoWeddingApp::Application.routes.draw do
-  get "gifts/index"
-
-  get "gifts/new"
-
-  get "gifts/edit"
-
-  get "addresses/index"
-
-  get "addresses/new"
-
-  get "addresses/create"
-
-  get "addresses/edit"
-
-  get "addresses/update"
-
-  get "addresses/destroy"
-
-  get "guests/show"
-
-  get "guests/edit"
-
-  get "guests/update"
+  resources :guests do
+    resource :gift
+    resource :address
+    resource :rsvp, :controller => :RSVPs
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
