@@ -29,7 +29,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rcov'
-  gem 'rspec-instafail'
   gem 'shoulda-matchers'
   gem 'webrat'
 
