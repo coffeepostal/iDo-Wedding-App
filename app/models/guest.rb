@@ -1,6 +1,8 @@
 class Guest < ActiveRecord::Base
-  has_one :address
-  has_one :gift
-  has_one :rsvp, :class_name => 'RSVP'
+  with_options :dependent => :destroy do |guest|
+    guest.has_one :address
+    guest.has_one :gift
+    guest.has_one :rsvp, :class_name => 'RSVP'
+  end
   has_one :thank_you, :through => :gift
 end
