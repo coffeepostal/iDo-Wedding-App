@@ -1,4 +1,10 @@
 IDoWeddingApp::Application.routes.draw do
+  get "gifts/index"
+
+  get "gifts/new"
+
+  get "gifts/edit"
+
   get "addresses/index"
 
   get "addresses/new"
