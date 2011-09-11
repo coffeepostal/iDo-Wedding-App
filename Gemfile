@@ -14,10 +14,23 @@ end
 
 gem 'jquery-rails'
 
-group :test do
+group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+end
 
-  # Pretty printed test output
-  gem 'turn', :require => false
+group :test do
+  gem 'rcov'
+  gem 'webrat'
+  gem 'capybara'
+
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+
+  gem 'growl',  '~> 1.0.3' # Install Growl (http://growl.info) then `brew install growlnotify`
+
+  if RUBY_PLATFORM =~ /darwin/i
+    gem 'rb-fsevent', '0.4.3'
+  end
 end
