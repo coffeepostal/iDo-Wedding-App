@@ -21,5 +21,5 @@ It will give you the PIN associated with your new (admin) Guest record and the l
 
 Thanks,
 
-the iDo team
+the iDo team<br />
 Adam and Dallas
