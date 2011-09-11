@@ -1,6 +1,8 @@
 IDoWeddingApp::Application.routes.draw do
   resources :guests do
-    resource :gift
+    resource :gift do
+      resource :thank_you
+    end
     resource :address
     resource :rsvp, :controller => :RSVPs
   end
