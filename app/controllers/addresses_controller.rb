@@ -16,5 +16,4 @@ class AddressesController < ApplicationController
 
   def destroy
   end
-
 end
