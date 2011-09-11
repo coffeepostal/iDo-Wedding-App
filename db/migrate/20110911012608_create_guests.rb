@@ -5,6 +5,7 @@ class CreateGuests < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :name_suffix
+      t.string :additional_names
       t.string :email
       t.string :pin
 

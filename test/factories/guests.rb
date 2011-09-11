@@ -6,6 +6,7 @@ FactoryGirl.define do
       first_name "MyString"
       last_name "MyString"
       name_suffix "MyString"
+      additional_names "MyString"
       email "MyString"
       pin "MyString"
     end

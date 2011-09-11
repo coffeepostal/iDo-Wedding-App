@@ -9,6 +9,5 @@ FactoryGirl.define do
       state_code ""
       country_code "MyString"
       province_code "MyString"
-      additional_names "MyString"
     end
 end
