@@ -1,4 +1,10 @@
 IDoWeddingApp::Application.routes.draw do
+  get "guests/show"
+
+  get "guests/edit"
+
+  get "guests/update"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
