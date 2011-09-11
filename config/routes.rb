@@ -4,7 +4,7 @@ IDoWeddingApp::Application.routes.draw do
       resource :thank_you
     end
     resource :address
-    resource :rsvp, :controller => :RSVPs
+    resource :rsvp
   end
 
   # The priority is based upon order of creation:

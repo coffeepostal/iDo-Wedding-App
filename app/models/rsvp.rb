@@ -1,3 +1,3 @@
-class RSVP < ActiveRecord::Base
+class Rsvp < ActiveRecord::Base
   belongs_to :guest
 end

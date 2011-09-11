@@ -18,6 +18,10 @@ module IDoWeddingApp
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
+    # Add all lib/ files to autoloadables.
+    # config.autoload_paths += %W(#{config.root}/lib)
+    # config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -37,6 +41,8 @@ module IDoWeddingApp
     config.generators do |g|
       # generate HAML views instead of erb
       g.template_engine     :haml
+      # use simple_form as the default form builder
+      g.form_builder        :simple_form
       # don’t automatically create a helper for every controller
       g.helper              false
       # don’t automatically create assets for every controller
@@ -45,8 +51,8 @@ module IDoWeddingApp
       g.test_framework      :rspec
       # don’t automatically create specs for views
       g.view_specs          false
-      # use FactoryGirl for generating fixtures
-      g.fixture_replacement :factory_girl
+      # use FactoryGirl for generating fixtures and put them in the spec directory
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.

@@ -1,47 +1,33 @@
 require 'spec_helper'
 
 describe AddressesController do
-
-  describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
-    end
-  end
-
   describe "GET 'new'" do
-    it "should be successful" do
-      get 'new'
-      response.should be_success
-    end
+    before { get :new, :guest_id => 1 }
+
+    its(:response) { should be_success }
   end
 
-  describe "GET 'create'" do
-    it "should be successful" do
-      get 'create'
-      response.should be_success
-    end
+  describe "POST 'create'" do
+    before { post :create, :guest_id => 1 }
+
+    its(:response) { should redirect_to('/guests/1/address') }
   end
 
   describe "GET 'edit'" do
-    it "should be successful" do
-      get 'edit'
-      response.should be_success
-    end
+    before { get :edit, :guest_id => 1 }
+
+    its(:response) { should be_success }
   end
 
-  describe "GET 'update'" do
-    it "should be successful" do
-      get 'update'
-      response.should be_success
-    end
+  describe "PUT 'update'" do
+    before { put :update, :guest_id => 1 }
+
+    its(:response) { should redirect_to('/guests/1/address') }
   end
 
-  describe "GET 'destroy'" do
-    it "should be successful" do
-      get 'destroy'
-      response.should be_success
-    end
-  end
+  describe "DELETE 'destroy'" do
+    before { delete :destroy, :guest_id => 1 }
 
+    its(:response) { should redirect_to('/guests/1') }
+  end
 end
