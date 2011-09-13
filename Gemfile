@@ -28,6 +28,7 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'forgery'
   gem 'rcov'
   gem 'shoulda-matchers'
   gem 'webrat'
