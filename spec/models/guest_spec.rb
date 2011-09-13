@@ -10,4 +10,7 @@ describe Guest do
   it { should respond_to :name_suffix }
   it { should respond_to :additional_names }
   it { should respond_to :email }
+
+  it { should respond_to :name }
+  its(:name) { should == "#{@guest.first_name} #{@guest.last_name}" }
 end

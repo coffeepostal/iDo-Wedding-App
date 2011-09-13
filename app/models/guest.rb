@@ -10,6 +10,10 @@ class Guest < ActiveRecord::Base
 
   before_create :generate_pin
 
+  def name
+    [first_name, last_name].reject(&:blank?).join(' ')
+  end
+
 private
 
   # generate a PIN for this guest record
