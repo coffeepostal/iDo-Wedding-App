@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe ThankYou do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { create :thank_you }
+
+  it { should respond_to :note }
 end

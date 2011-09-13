@@ -6,6 +6,7 @@ Spork.prefork do
   # need to restart spork for it take effect.
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
+  require 'forgery'
   require 'rspec/rails'
   require 'capybara/rspec'
 
@@ -30,6 +31,9 @@ Spork.prefork do
 
     config.use_transactional_fixtures = true
   end
+
+  # alias Forgery as F to keep things short
+  F = Forgery
 end
 
 Spork.each_run do

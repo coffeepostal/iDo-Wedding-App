@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Gift do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { create :gift }
+
+  it { should respond_to :gift }
+  it { should respond_to :description }
+  it { should respond_to :notes }
 end

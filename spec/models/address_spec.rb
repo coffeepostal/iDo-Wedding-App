@@ -1,5 +1,13 @@
 require 'spec_helper'
 
 describe Address do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { create :address }
+
+  it { should respond_to :line1 }
+  it { should respond_to :line2 }
+  it { should respond_to :city }
+  it { should respond_to :zip }
+  it { should respond_to :state_code }
+  it { should respond_to :country_code }
+  it { should respond_to :province_code }
 end
