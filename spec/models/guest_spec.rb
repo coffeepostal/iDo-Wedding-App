@@ -4,6 +4,11 @@ describe Guest do
   before  { @guest = create(:guest) }
   subject { @guest }
 
+  # accepts_nested_attributes_for :address, :gift, :rsvp
+  it { should respond_to :address_attributes= }
+  it { should respond_to :gift_attributes= }
+  it { should respond_to :rsvp_attributes= }
+
   it { should respond_to :honorific }
   it { should respond_to :first_name }
   it { should respond_to :last_name }

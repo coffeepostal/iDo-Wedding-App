@@ -6,6 +6,8 @@ class Guest < ActiveRecord::Base
   end
   has_one :thank_you, :through => :gift
 
+  accepts_nested_attributes_for :address, :gift, :rsvp
+
   validates :last_name, :presence => true
 
   before_create :generate_pin
