@@ -6,9 +6,12 @@ class Guest < ActiveRecord::Base
   end
   has_one :thank_you, :through => :gift
 
-  accepts_nested_attributes_for :address, :gift, :rsvp
+  accepts_nested_attributes_for :address, :gift, :rsvp, :reject_if => :all_blank
 
   validates :last_name, :presence => true
+  validates_associated :address
+  validates_associated :gift
+  validates_associated :rsvp
 
   before_create :generate_pin
 
@@ -23,9 +26,7 @@ private
     # don't do anything if this record already has a 4-digit PIN
     return if self.pin =~ /^\d{4}$/
     # create a random, unique 4-digit PIN
-    begin
-      pin_value = Array.new(4) { rand(10) }.join
-    end while self.class.exists?(:pin => pin_value)
-    self.pin = pin_value
+    begin pin = Array.new(4) { rand(10) }.join end while self.class.exists?(:pin => pin)
+    self.pin = pin
   end
 end
