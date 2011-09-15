@@ -15,9 +15,32 @@ class Guest < ActiveRecord::Base
 
   before_create :generate_pin
 
+  def name?
+    [first_name, last_name].any?
+  end
+
   def name
-    return nil if [first_name, last_name].none?
-    [first_name, last_name, name_suffix].reject(&:blank?).join(' ')
+    return nil unless name?
+    [first_name, last_name].reject(&:blank?).join(' ')
+  end
+
+  def name_with_honorific
+    return nil unless name?
+    return name unless honorific?
+    "#{honorific} #{name}"
+  end
+
+  def name_with_suffix
+    return nil unless name?
+    return name unless name_suffix?
+    "#{name} #{name_suffix}"
+  end
+
+  def name_with_honorific_and_suffix
+    return nil unless name?
+    return name_with_honorific unless name_suffix?
+    return name_with_suffix unless honorific?
+    "#{honorific} #{name} #{name_suffix}"
   end
 
 private
