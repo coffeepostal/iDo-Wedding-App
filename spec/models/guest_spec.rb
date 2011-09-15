@@ -52,17 +52,17 @@ describe Guest do
   describe '#name?' do
     subject { @guest.name? }
 
-    context 'when it does not have a first_name' do
+    context 'when guest does not have a first_name' do
       before { @guest.first_name = nil }
       it { should be_true }
     end
 
-    context 'when it does not have a last_name' do
+    context 'when guest does not have a last_name' do
       before { @guest.last_name = nil }
       it { should be_true }
     end
 
-    context 'when it does not have a first_name or a last_name' do
+    context 'when guest does not have a first_name nor a last_name' do
       before { @guest.first_name = @guest.last_name = nil }
       it { should be_false }
     end
@@ -73,17 +73,17 @@ describe Guest do
   describe '#name' do
     subject { @guest.name}
 
-    context 'when it does not have a first_name' do
+    context 'when guest does not have a first_name' do
       before { @guest.first_name = nil }
       it { should == @guest.last_name }
     end
 
-    context 'when it does not have a last_name' do
+    context 'when guest does not have a last_name' do
       before { @guest.last_name = nil }
       it { should == @guest.first_name }
     end
 
-    context 'when it does not have a first_name or a last_name' do
+    context 'when guest does not have a first_name nor a last_name' do
       before { @guest.first_name = @guest.last_name = nil }
       it { should be_nil }
     end
@@ -94,27 +94,27 @@ describe Guest do
   describe '#name_with_honorific' do
     subject { @guest.name_with_honorific }
 
-    context 'when it has a name' do
-      context 'and it has an honorific' do
+    context 'when guest has a name' do
+      context 'and an honorific' do
         before { @guest.honorific = 'Dr.' }
         it { should == "Dr. #{@guest.name}" }
       end
 
-      context 'but it does not have an honorific' do
+      context 'but not an honorific' do
         before { @guest.honorific = nil }
         it { should == @guest.name }
       end
     end
 
-    context 'when it does not have a name' do
+    context 'when guest does not have a name' do
       before { @guest.first_name = @guest.last_name = nil }
 
-      context 'and it does not have an honorific' do
+      context 'nor an honorific' do
         before { @guest.honorific = nil }
         it { should be_nil }
       end
 
-      context 'but it does have an honorific' do
+      context 'but does have an honorific' do
         before { @guest.honorific = 'Rev.' }
         it { should be_nil }
       end
@@ -126,27 +126,27 @@ describe Guest do
   describe '#name_with_suffix' do
     subject { @guest.name_with_suffix }
 
-    context 'when it has a name' do
-      context 'and it has a name_suffix' do
+    context 'when guest has a name' do
+      context 'and a name_suffix' do
         before { @guest.name_suffix = 'Jr.' }
         it { should == "#{@guest.name} Jr." }
       end
 
-      context 'but it does not have a name_suffix' do
+      context 'but not a name_suffix' do
         before { @guest.name_suffix = nil }
         it { should == @guest.name }
       end
     end
 
-    context 'when it does not have a name' do
+    context 'when guest does not have a name' do
       before { @guest.first_name = @guest.last_name = nil }
 
-      context 'and it does not have a name_suffix' do
+      context 'nor a name_suffix' do
         before { @guest.name_suffix = nil }
         it { should be_nil }
       end
 
-      context 'but it does have a name_suffix' do
+      context 'but does have a name_suffix' do
         before { @guest.name_suffix = 'Sr.' }
         it { should be_nil }
       end
@@ -158,7 +158,7 @@ describe Guest do
   describe '#name_with_honorific_and_suffix' do
     subject { @guest.name_with_honorific_and_suffix }
 
-    context 'when it has a name' do
+    context 'when guest has a name' do
       context 'and an honorific and a name_suffix' do
         before { @guest.honorific = 'Mr.'; @guest.name_suffix = 'III' }
         it { should == "Mr. #{@guest.name} III" }
@@ -180,7 +180,7 @@ describe Guest do
       end
     end
 
-    context 'when it does not have a name' do
+    context 'when guest does not have a name' do
       before { @guest.first_name = @guest.last_name = nil }
 
       context 'but does have an honorific and a name_suffix' do
