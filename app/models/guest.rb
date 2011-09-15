@@ -16,7 +16,8 @@ class Guest < ActiveRecord::Base
   before_create :generate_pin
 
   def name
-    [first_name, last_name].reject(&:blank?).join(' ')
+    return nil if [first_name, last_name].none?
+    [first_name, last_name, name_suffix].reject(&:blank?).join(' ')
   end
 
 private

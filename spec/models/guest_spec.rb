@@ -48,5 +48,44 @@ describe Guest do
 
   # Methods
   it { should respond_to :name }
-  its(:name) { should == "#{@guest.first_name} #{@guest.last_name}" }
+
+  context 'when there is no name_suffix' do
+    before { @guest.name_suffix = nil }
+    its(:name) { should == "#{@guest.first_name} #{@guest.last_name}" }
+
+    context 'and no first_name' do
+      before { @guest.first_name = nil }
+      its(:name) { should == @guest.last_name }
+    end
+
+    context 'and no last_name' do
+      before { @guest.last_name = nil }
+      its(:name) { should == @guest.first_name }
+    end
+
+    context 'and no first_name or last_name' do
+      before { @guest.first_name = @guest.last_name = nil }
+      its(:name) { should be_nil }
+    end
+  end
+
+  context 'when there is a name_suffix' do
+    before { @guest.name_suffix = 'Jr.' }
+    its(:name) { should == "#{@guest.first_name} #{@guest.last_name} Jr." }
+
+    context 'but there is no first_name' do
+      before { @guest.first_name = nil }
+      its(:name) { should == "#{@guest.last_name} Jr." }
+    end
+
+    context 'but there is no last_name' do
+      before { @guest.last_name = nil }
+      its(:name) { should == "#{@guest.first_name} Jr." }
+    end
+
+    context 'but there is no first_name nor last_name' do
+      before { @guest.first_name = @guest.last_name = nil }
+      its(:name) { should be_nil }
+    end
+  end
 end
